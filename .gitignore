@@ -72,3 +72,5 @@ buildNumber.properties
 *.exe
 
 *.hibernate.cfg.xml
+
+*.json
