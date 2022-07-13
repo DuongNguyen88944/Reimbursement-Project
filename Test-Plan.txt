@@ -35,13 +35,8 @@ User stories and associated unit/service tests
         -Service Testing
             - N/A
     
-    As a user I want to be able to Logout
-        -Unit Testing
-            - user logout of their page
-                - Method: logout()
-        -Service Testing
-            - N/A
-  
+
+    - Method: getEmployeeRequestById()
     As an employee I want to be able to view the request
         -Unit Testing
             - employee view request
