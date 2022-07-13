@@ -70,3 +70,5 @@ buildNumber.properties
 
 # Ignore the driver
 *.exe
+
+*.hibernate.cfg.xml
