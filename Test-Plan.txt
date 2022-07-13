@@ -1,4 +1,4 @@
-Technologies to be used
+Technologies to be used -
     - Java
     - Maven
     - Hibernate
