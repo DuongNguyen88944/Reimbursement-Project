@@ -36,6 +36,20 @@ User stories and associated unit/service tests
         - Username must be unique
             - Method: checkUsername()
 
+    As an employee I want to be able to view my request
+    - Unit Testing
+        - Employee view request
+            - Method: viewRequest()
+    - Service Testing
+        - N/a
+
+    As a manager I want to be able to view employee request
+    - Unit Testing 
+        - Manager view request
+            - Method: viewRequest()
+    - Service Testing
+        - N/a
+
    As an employee I want to create a request
     - Unit Testing
         - Employee create request
