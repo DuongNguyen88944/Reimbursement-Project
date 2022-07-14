@@ -28,50 +28,28 @@ Entities Tracker
     - Manager description (varchar(500))
 
 User stories and associated unit/service tests
-    As a user I want to be able to login 
-        -Unit Testing
-            - user login to their webpage
-                - Method: login()
-        -Service Testing
-            - N/A
-    
+   As employee I want to be able to login 
+    - Unit Testing 
+        - Employee logging in
+            - Method: login()
+    -Service Testing 
+        - Username must be unique
+            - Method: checkUsername()
 
-    - Method: getEmployeeRequestById()
-    As an employee I want to be able to view the request
-        -Unit Testing
-            - employee view request
-                - Method: tableDisplay()
-        -Service Testing
-            - Employee must only see their own request
-                - Method: checkRequest()
-    
-    As an employee I want to be able to create a request
-        -Unit Testing
-            - employee create request
-                - Method: createRequest()
-        -Service Testing
-            - Employee only request up to $1000
-                - Method: moneyLimit()
-            - Employee request cannot be longer than 500 characters
-                - Method: characterLimit()
+   As an employee I want to create a request
+    - Unit Testing
+        - Employee create request
+            - Method: createRequest()
+    - Service Testing 
+        - Request cannot exceed $1000
+            - Method: moneyLimit()
+        - Request cannot exceed 500 character
+            - Method: characterLimit()
 
-    As a manager I want to be able to view the request
-        -Unit Testing
-            - manager view request
-                - Method: getAllRequest()
-        -Service Testing
-            - N/A
-
-    As a manager I want to be able to accept the request
-        -Unit Testing
-            - Method: acceptRequest()
-        -Service Testing
-            - Manager reason cannot exceed 500 characters
-                - Method: characterLimit()
-
-    As a manager I want to be able to reject the request
-        -Unit Testing
-            - Method: rejectRequest()
-        -Service Testing
-            - Manager reason cannot exceed 500 characters
-                - Method: characterLimit()
+   As a manager I want to update the status of the request
+    - Unit Testing
+        - Manager update request status 
+            - Method: updateRequest()
+    - Service Testing 
+        - Request cannot exceed 500 character
+            - Method: characterLimit()
