@@ -19,6 +19,7 @@ public class Request {
     public Request() {
     }
 
+    
     public Request(String request_desc, int request_amount, String status, String manager_reason) {
         this.request_desc = request_desc;
         this.request_amount = request_amount;

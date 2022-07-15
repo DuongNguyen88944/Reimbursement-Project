@@ -20,8 +20,6 @@ public class RepTest {
 
         requestDao = new RequestDAO();
         employeeDao = new EmployeeDAO();
-
-
     }
 
     @Test
@@ -30,6 +28,12 @@ public class RepTest {
     Assert.assertTrue(requestList.size() > 0);
 }
 
+    @Test 
+    public void createPositiveRequests(){
+    Request testRequest = new Request("Testing fees", 400, "Pending", "N/A");
+    Request result = requestDao.createRequest(testRequest);
+    Assert.assertNotNull(result.getTicket_number());
+}
 
 
 }

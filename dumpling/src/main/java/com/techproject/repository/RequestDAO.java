@@ -14,5 +14,13 @@ public class RequestDAO implements RequestDAOInterface {
         HibernateUtil.endTransaction();
         return requestList;
     }
+
+    @Override
+    public Request createRequest(Request newRequest) {
+        HibernateUtil.beginTransaction();
+        HibernateUtil.getSession().save(newRequest);
+        HibernateUtil.endTransaction();
+        return newRequest;
+    }
     
 }
