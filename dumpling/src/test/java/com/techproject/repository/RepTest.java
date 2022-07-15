@@ -1,8 +1,15 @@
 package com.techproject.repository;
 
-import org.junit.BeforeClass;
+import java.util.List;
 
-public class Test {
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.techproject.entity.Request;
+
+
+public class RepTest {
 
     public static RequestDAOInterface requestDao;
     public static EmployeeDAOInterface employeeDao;
@@ -17,6 +24,11 @@ public class Test {
 
     }
 
+    @Test
+    public void getRequestPositiveTest(){
+    List<Request> requestList = requestDao.viewRequest();
+    Assert.assertTrue(requestList.size() > 0);
+}
 
 
 
