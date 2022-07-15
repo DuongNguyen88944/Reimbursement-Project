@@ -1,62 +1,77 @@
 package com.techproject.entity;
 
 public class Request {
-    private int ticketNumber;
-    private String requestDesc;
-    private int requestMoney;
+    private int ticket_number;
+    private String request_desc;
+    private int request_amount;
     private String status;
-    private String managerReason;
-
+    private String manager_reason;
     
     public Request() {
     }
-    public Request(int ticketNumber, String requestDesc, int requestMoney, String status, String managerReason) {
-        this.ticketNumber = ticketNumber;
-        this.requestDesc = requestDesc;
-        this.requestMoney = requestMoney;
+
+    public Request(String request_desc, int request_amount, String status, String manager_reason) {
+        this.request_desc = request_desc;
+        this.request_amount = request_amount;
         this.status = status;
-        this.managerReason = managerReason;
+        this.manager_reason = manager_reason;
     }
-    public Request(String requestDesc, int requestMoney, String status, String managerReason) {
-        this.requestDesc = requestDesc;
-        this.requestMoney = requestMoney;
+
+    public Request(int ticket_number, String request_desc, int request_amount, String status, String manager_reason) {
+        this.ticket_number = ticket_number;
+        this.request_desc = request_desc;
+        this.request_amount = request_amount;
         this.status = status;
-        this.managerReason = managerReason;
+        this.manager_reason = manager_reason;
     }
-    public int getTicketNumber() {
-        return ticketNumber;
+
+    public int getTicket_number() {
+        return ticket_number;
     }
-    public void setTicketNumber(int ticketNumber) {
-        this.ticketNumber = ticketNumber;
+
+    public void setTicket_number(int ticket_number) {
+        this.ticket_number = ticket_number;
     }
-    public String getRequestDesc() {
-        return requestDesc;
+
+    public String getRequest_desc() {
+        return request_desc;
     }
-    public void setRequestDesc(String requestDesc) {
-        this.requestDesc = requestDesc;
+
+    public void setRequest_desc(String request_desc) {
+        this.request_desc = request_desc;
     }
-    public int getRequestMoney() {
-        return requestMoney;
+
+    public int getRequest_amount() {
+        return request_amount;
     }
-    public void setRequestMoney(int requestMoney) {
-        this.requestMoney = requestMoney;
+
+    public void setRequest_amount(int request_amount) {
+        this.request_amount = request_amount;
     }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
-    public String getManagerReason() {
-        return managerReason;
+
+    public String getManager_reason() {
+        return manager_reason;
     }
-    public void setManagerReason(String managerReason) {
-        this.managerReason = managerReason;
+
+    public void setManager_reason(String manager_reason) {
+        this.manager_reason = manager_reason;
     }
+
     @Override
     public String toString() {
-        return "Request [managerReason=" + managerReason + ", requestDesc=" + requestDesc + ", requestMoney="
-                + requestMoney + ", status=" + status + ", ticketNumber=" + ticketNumber + "]";
+        return "Request [manager_reason=" + manager_reason + ", request_amount=" + request_amount + ", request_desc="
+                + request_desc + ", status=" + status + ", ticket_number=" + ticket_number + "]";
     }
+
+    
+    
     
 }
