@@ -2,56 +2,54 @@ package com.techproject.entity;
 
 public class Employee {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String first_name;
+    private String last_name;
     private String role;
-    private String username;
-    private String password;
-
-    public Employee(){
-
+    private String e_username;
+    private String e_password;
+    
+    public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String role, String username, String password) {
+    public Employee(String first_name, String last_name, String role, String e_username, String e_password) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.role = role;
+        this.e_username = e_username;
+        this.e_password = e_password;
+    }
+
+    public Employee(int id, String first_name, String last_name, String role, String e_username, String e_password) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.role = role;
-        this.username = username;
-        this.password = password;
-    }
-
-    public Employee(String firstName, String lastName, String role, String username, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
-        this.username = username;
-        this.password = password;
+        this.e_username = e_username;
+        this.e_password = e_password;
     }
 
     public int getId() {
         return id;
     }
 
-    
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public String getRole() {
@@ -62,26 +60,29 @@ public class Employee {
         this.role = role;
     }
 
-    public String getUsername() {
-        return username;
+    public String getE_username() {
+        return e_username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setE_username(String e_username) {
+        this.e_username = e_username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getE_password() {
+        return e_password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setE_password(String e_password) {
+        this.e_password = e_password;
     }
 
     @Override
     public String toString() {
-        return "Employee [firstName=" + firstName + ", id=" + id + ", lastName=" + lastName + ", password=" + password
-                + ", role=" + role + ", username=" + username + "]";
+        return "Employee [e_password=" + e_password + ", e_username=" + e_username + ", first_name=" + first_name
+                + ", id=" + id + ", last_name=" + last_name + ", role=" + role + "]";
     }
+
+    
+   
 
 }
