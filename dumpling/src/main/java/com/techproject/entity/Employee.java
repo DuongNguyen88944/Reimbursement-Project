@@ -1,13 +1,12 @@
 package com.techproject.entity;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -21,6 +20,13 @@ public class Employee {
     
     public Employee() {
     }
+    
+    
+    public Employee(String e_username, String e_password) {
+        this.e_username = e_username;
+        this.e_password = e_password;
+    }
+
 
     public Employee(String first_name, String last_name, String role, String e_username, String e_password) {
         this.first_name = first_name;
