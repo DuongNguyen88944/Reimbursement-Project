@@ -1,6 +1,17 @@
 package com.techproject.entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
+
+    @Id
+    @GeneratedValue
     private int id;
     private String first_name;
     private String last_name;

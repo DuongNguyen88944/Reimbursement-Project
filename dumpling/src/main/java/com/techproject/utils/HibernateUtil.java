@@ -1,5 +1,4 @@
 package com.techproject.utils;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,14 +32,10 @@ public class HibernateUtil {
     public static void endTransaction() {
         transaction.commit();
         session.close();
-}
+    }
 
     public static Session getSession() {
         return session;
     }
-
-
-
-
 
 }
