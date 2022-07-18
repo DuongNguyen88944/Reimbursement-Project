@@ -21,6 +21,8 @@ public class RepTest {
         requestDao = new RequestDAO();
         employeeDao = new EmployeeDAO();
 
+        Request setupUpdateRequest = new Request(10, "request not updated", 500, "Pending", "N/A");
+        requestDao.createRequest(setupUpdateRequest);
 
     }
 
@@ -31,13 +33,6 @@ public class RepTest {
 
         Assert.assertTrue(employeeList.size() == 1);
     } 
-
-    // @Test // Make sure to add this @Test annotation
-    // public void createBookPositiveTest(){ // This is a positive test, so I note it in the test name
-    //     Employee testEmployee = new Employee("viet","nguyen","employee","viet","viet");
-    //     Employee result = employeeDao.CreateEmployee(testEmployee);
-    //     Assert.assertNotNull(result.getId());
-    // }
 
     @Test
     public void getRequestPositiveTest() {
@@ -54,7 +49,7 @@ public class RepTest {
 
     @Test
     public void updateBookPositiveTest() {
-        Request updatedRequest = new Request(1, "mile fees", 1000, "updated", "don't want to");
+        Request updatedRequest = new Request(10, "mile fees", 400, "updated", "don't want to");
         Request result = requestDao.updateRequest(updatedRequest);
         Assert.assertEquals("updated", result.getStatus());
     }
