@@ -34,25 +34,25 @@ User stories and associated unit/service tests
             - Method: CheckLogin()                            Viet
     - Service Testing 
         - Username must be unique
-            - Method: checkUsername()
+            - Method: checkUsername()                         Viet
 
    As employee's I want to view the request
    - Unit Testing
         - Employee's view their request                       Duong
             - Method: requestsExist()
    - Service Testing
-        - Employee must view their own request
-            - Method: requestCheck()
+        - Employee must view their own request                
+            - Method: requestCheck()                          Duong
 
     As an employee I want to create a request
     - Unit Testing
         - Employee create request
-            - Method: createRequest()                          Elizabeth
+            - Method: createRequest()                          Duong
     - Service Testing 
         - Request cannot exceed $1000
-            - Method: moneyLimit()
+            - Method: moneyLimit()                             Fabian
         - Request cannot exceed 500 character
-            - Method: characterLimit()
+            - Method: characterLimit()                         Fabian
 
    As a manager I want to update the status of the request
     - Unit Testing
@@ -60,4 +60,4 @@ User stories and associated unit/service tests
             - Method: updateRequest()                           Fabian 
     - Service Testing 
         - Request cannot exceed 500 character
-            - Method: characterLimit()
+            - Method: characterLimit()                          Fabian
