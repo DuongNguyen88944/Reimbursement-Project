@@ -34,7 +34,7 @@ User stories and associated unit/service tests
             - Method: CheckLogin()                            Viet
     - Service Testing 
         - Username must be unique
-            - Method: checkUsername()                         Viet
+            - Method: checkUsername()                         DataBase will handle it
 
    As employee's I want to view the request
    - Unit Testing
@@ -50,7 +50,7 @@ User stories and associated unit/service tests
             - Method: createRequest()                          Duong
     - Service Testing 
         - Request cannot exceed $1000
-            - Method: moneyLimit()                             Fabian
+            - Method: moneyLimit()                             Viet
         - Request cannot exceed 500 character
             - Method: characterLimit()                         Fabian
 
