@@ -14,8 +14,8 @@ public class ServiceTest {
 
     @BeforeClass
     public static void setup(){
-        requestDao = new RequestsDAO();
-        requestService = new RequestsService(requestDao);
+        //requestDao = new RequestsDAO();
+       // requestService = new RequestsService(requestDao);
         employeeDao = new EmployeeDAO();
         employeeService = new EmployeesService(employeeDao);
     }
