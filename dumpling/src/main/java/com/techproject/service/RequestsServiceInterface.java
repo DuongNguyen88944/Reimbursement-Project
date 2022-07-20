@@ -7,4 +7,5 @@ public interface RequestsServiceInterface {
 
     Request ServiceCreateRequest(Request newRequest);
     
+    Request serviceUpdateRequest(Request updatedRequest); 
 }

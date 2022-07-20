@@ -1,5 +1,7 @@
 package com.techproject.utils;
 
+
+
 import com.techproject.entity.Employee;
 import com.techproject.entity.Request;
 import com.techproject.repository.EmployeeDAO;
@@ -39,6 +41,16 @@ public class BusinessRules  {
 
 
     } 
+
+  public class BusinessRules {
+    public boolean lessThanFiveHundred(Request request) {
+        if (request.getRequest_desc().length() <= 500) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
 
 
 
