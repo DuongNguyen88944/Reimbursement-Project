@@ -28,7 +28,7 @@ public class RepTest {
 
      @Test
     public void CheckLoginExist(){
-        List<Employee> employeeList = employeeDao.CheckLogin();
+        List<Employee> employeeList = employeeDao.CheckLogin("user","pwd");
         System.out.println("CheckLogin method EmployyeDao :"+employeeList.size());
 
         Assert.assertTrue(employeeList.size() == 1);
