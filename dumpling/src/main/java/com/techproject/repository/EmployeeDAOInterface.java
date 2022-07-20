@@ -6,7 +6,7 @@ import com.techproject.entity.Employee;
 
 public interface EmployeeDAOInterface {
     
-    List<Employee>  CheckLogin();
+    List<Employee>  CheckLogin(String u, String p);
 
     //Employee CreateEmployee(Employee employee);
     
