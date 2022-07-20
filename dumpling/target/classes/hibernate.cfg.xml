@@ -5,13 +5,22 @@
 
 <hibernate-configuration>
     <session-factory>
+        <!-- This is our driver. It's necessary for our connection, so it should stay the same -->
         <property name="connection.driver_class">org.postgresql.Driver</property>
+        <!-- replace this with your AWS link as well as whatever database you have set up:-->
+        <!-- preface our AWS link with "jdbc:postgresql://"-->
+        <!-- at the end of our link we specify the database, in this case pets2-->
         <property name="connection.url">jdbc:postgresql://java-dumplings.ccqdgkjpifho.us-east-2.rds.amazonaws.com/postgres</property>
+        <!-- replace credentials: -->
         <property name="connection.username">dumplings</property>
         <property name="connection.password">Indiana4</property>
+        <!-- Keep the dialect the same because we're using postgres-->
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <!-- if we make changes to our java code, our database will automatically update-->
         <property name="hbm2ddl.auto">update</property>
+        <!-- this means that any SQL commands that are run will be displayed on the terminal: -->
         <property name="show_sql">true</property>
+        <!-- Object Reational Mapping, we're mapping our Pet class (that we have yet to create) to a table in our database-->
         <mapping class="com.techproject.entity.Employee"/>
         <mapping class="com.techproject.entity.Request"/>
     </session-factory>
