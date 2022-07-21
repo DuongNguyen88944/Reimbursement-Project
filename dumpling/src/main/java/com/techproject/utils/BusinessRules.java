@@ -48,6 +48,14 @@ public class BusinessRules  {
         }
     }
 
+    public boolean managerLessThanFiveHundred(Request request) {
+        if (request.getManager_reason().length() <= 500 ) {
+            return true;
+        } else {
+            return false;
+
+        }
+    }
     public List<Request> viewOwnRequest(List<Request> initialList, String name){
         List<Request> filterList = new ArrayList<>();
         for(Request request : initialList){
