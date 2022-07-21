@@ -21,7 +21,7 @@ public class RepTest {
         requestDao = new RequestDAO();
         employeeDao = new EmployeeDAO();
 
-        Request setupUpdateRequest = new Request(10, "request not updated", 500, "Pending", "N/A");
+        Request setupUpdateRequest = new Request(4,"Duong Nguyen", "request not updated", 500, "Pending", "N/A");
         requestDao.createRequest(setupUpdateRequest);
 
     }
@@ -42,14 +42,14 @@ public class RepTest {
 
     @Test
     public void createPositiveRequests() {
-        Request testRequest = new Request("Testing fees", 400, "Pending", "N/A");
+        Request testRequest = new Request("Duong Nguyen","Testing fees", 400, "Pending", "N/A");
         Request result = requestDao.createRequest(testRequest);
         Assert.assertNotNull(result.getTicket_number());
     }
 
     @Test
     public void updateBookPositiveTest() {
-        Request updatedRequest = new Request(10, "mile fees", 400, "updated", "don't want to");
+        Request updatedRequest = new Request(4,"Duong Nguyen", "mile fees", 400, "updated", "don't want to");
         Request result = requestDao.updateRequest(updatedRequest);
         Assert.assertEquals("updated", result.getStatus());
     }

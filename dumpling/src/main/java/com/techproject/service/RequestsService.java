@@ -1,5 +1,7 @@
 package com.techproject.service;
 
+import java.util.List;
+
 import com.techproject.entity.Request;
 
 import com.techproject.exceptions.InvalidMessage;
@@ -12,31 +14,18 @@ public class RequestsService implements RequestsServiceInterface {
     
     
 
-    private RequestDAOInterface requestDao = new RequestDAO();
-    private BusinessRules businessRule = new BusinessRules();
+    private RequestDAOInterface requestDao ;
+    private BusinessRules businessRule ;
 
-    public RequestsService(RequestDAOInterface requestDao){
+    public RequestsService(RequestDAOInterface requestDao, BusinessRules businessRule){
         this.requestDao = requestDao;
+        this.businessRule = businessRule;
     }
 
-
-
     @Override
-    public Request serviceUpdateRequest(Request updatedRequest) {
-       businessRules =new BusinessRules();
-        if(this.businessRules.lessThanFiveHundred(updatedRequest)){
-        return this.requestDao.updateRequest(updatedRequest);
-    } else {
-        
-    }
-}
-
-  
-
-    @Override
-    public Request ServiceCreateRequest(Request newRequest) {
-        businessRule = new BusinessRules();
-        if (this.businessRule.ReimbursmentLessThousand(newRequest) ){
+    public Request serviceCreateRequest(Request newRequest) {
+     
+        if (this.businessRule.reimbursmentLessThousand(newRequest) ){
 
             return this.requestDao.createRequest(newRequest);
         }
@@ -44,6 +33,19 @@ public class RequestsService implements RequestsServiceInterface {
             throw new InvalidMessage("Amount over $1000");        }
          
      }
+
+    @Override
+    public List<Request> serviceViewRequest() {
+        List<Request> requestList = requestDao.viewRequest();
+        List<Request> result = businessRule.viewOwnRequest(requestList, "Duong Nguyen");
+        return result;
+    }
+
+    @Override
+    public Request serviceUpdateRequest(Request updatedRequest) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
 

@@ -1,11 +1,15 @@
 package com.techproject.service;
 
-import com.techproject.repository.EmployeeDAOInterface;
+import java.util.List;
+
+import com.techproject.entity.Employee;
 
 public class EmployeesService implements EmployeesServiceInterface{
-    private EmployeeDAOInterface employeeDao;
 
-    public EmployeesService(EmployeeDAOInterface employeeDao){
-        this.employeeDao = employeeDao;
+    @Override
+    public List<Employee> serviceCheckLogin(String u, String p) {
+        // TODO Auto-generated method stub
+        return null;
     }
+    
 }
