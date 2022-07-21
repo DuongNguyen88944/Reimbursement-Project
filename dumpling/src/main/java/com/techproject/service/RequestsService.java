@@ -5,7 +5,7 @@ import java.util.List;
 import com.techproject.entity.Request;
 
 import com.techproject.exceptions.InvalidMessage;
-import com.techproject.repository.RequestDAO;
+
 
 import com.techproject.repository.RequestDAOInterface;
 import com.techproject.utils.BusinessRules;
@@ -24,15 +24,11 @@ public class RequestsService implements RequestsServiceInterface {
 
     @Override
     public Request serviceCreateRequest(Request newRequest) {
-     
         if (this.businessRule.reimbursmentLessThousand(newRequest) && this.businessRule.lessThanFiveHundred(newRequest)){
-
             return this.requestDao.createRequest(newRequest);
-        }
-        else{
-            throw new InvalidMessage("invalid request");        }
-         
-     }
+        } else{
+            throw new InvalidMessage("Invalid request");        }
+    }
 
     @Override
     public List<Request> serviceViewRequest() {
@@ -43,11 +39,10 @@ public class RequestsService implements RequestsServiceInterface {
 
     @Override
     public Request serviceUpdateRequest(Request updatedRequest) {
-        businessRule = new BusinessRules();
-        if(this.businessRule.lessThanFiveHundred(updatedRequest)){
+        if(this.businessRule.managerLessThanFiveHundred(updatedRequest)){
             return this.requestDao.updateRequest(updatedRequest);
         }else{
-            throw new InvalidMessage("request cannot be more than 500 characters");
+            throw new InvalidMessage("Reason cannot be more than 500 characters");
         }
       
     }
