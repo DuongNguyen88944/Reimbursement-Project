@@ -31,7 +31,7 @@ public class RequestsService implements RequestsServiceInterface {
     }
 
     @Override
-    public List<Request> serviceViewRequest() {
+    public List<Request> serviceViewRequestWithBusinessRules() {
         List<Request> requestList = requestDao.viewRequest();
         List<Request> result = businessRule.viewOwnRequest(requestList, "Duong Nguyen");
         return result;
@@ -45,6 +45,11 @@ public class RequestsService implements RequestsServiceInterface {
             throw new InvalidMessage("Reason cannot be more than 500 characters");
         }
       
+    }
+
+    @Override
+    public List<Request> serviceViewRequest() {
+        return this.requestDao.viewRequest();
     }
 
 
