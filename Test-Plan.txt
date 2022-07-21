@@ -61,3 +61,14 @@ User stories and associated unit/service tests
     - Service Testing 
         - Request cannot exceed 500 character
             - Method: characterLimit()                          Fabian
+
+Integration Testing API (Each of the routes need 1 positive and 1 negative test for business rule(if applicable_))
+GET all request (Manager/Employee Pages)   (Fabian)
+POST create request (Employee Page)        (Duong)
+PATCH update request (Manager Page)        (Duong)
+PATCH login (Login Page)                   (Viet)
+
+WEBPAGES(HTML/JavaScript)/E2E Testing 
+Login                                      (Viet)
+Manager                                    (Duong)
+Employee                                   (Fabian)
