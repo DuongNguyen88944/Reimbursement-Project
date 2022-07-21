@@ -1,5 +1,5 @@
 package com.techproject;
 
-public class main {
+public class Main {
     
 }
