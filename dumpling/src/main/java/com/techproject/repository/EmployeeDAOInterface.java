@@ -8,6 +8,6 @@ public interface EmployeeDAOInterface {
     
     List<Employee>  CheckLogin(String u, String p);
 
-    //Employee CreateEmployee(Employee employee);
+    
     
 }

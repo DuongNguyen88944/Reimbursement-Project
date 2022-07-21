@@ -1,15 +1,17 @@
 package com.techproject.repository;
 
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.techproject.entity.Request;
 import com.techproject.exceptions.InvalidMessage;
-import com.techproject.service.EmployeesService;
-import com.techproject.service.EmployeesServiceInterface;
+
 import com.techproject.service.RequestsService;
 import com.techproject.service.RequestsServiceInterface;
+import com.techproject.utils.BusinessRules;
 
 //import junit.framework.Assert;
 
@@ -17,58 +19,58 @@ public class ServiceTest {
     public static RequestDAOInterface requestDao;
     public static RequestsServiceInterface requestService;
     public static EmployeeDAOInterface employeeDao;
-    public static EmployeesServiceInterface employeeService;
+  
+    public static BusinessRules businessRules;
 
     @BeforeClass
     public static void setup(){
 
         requestDao = new RequestDAO();
-        requestService = new RequestsService(requestDao);
-
+        businessRules = new BusinessRules();
+        requestService = new RequestsService(requestDao, businessRules);
+        
         employeeDao = new EmployeeDAO();
-        employeeService = new EmployeesService(employeeDao);
+      
     }
 
     
     @Test
     public void serviceCreateRequestNegativeCheck(){
-        Request request = new Request("Negative test more than 1000", 100, "pending", " ");
+        
         try{
-            Request Response =  requestService.ServiceCreateRequest(request);
-            System.out.println(Response.toString());
+            Request request = new Request("John","Negative test more than 1000", 1001, "pending", "N/A ");
+            Request response =  requestService.serviceCreateRequest(request);
+            System.out.println(response.toString());
             //Assert.fail("Bussiness rule Passed");   
-            Assert.fail("Amount less 1000");
+            Assert.fail();
         }
         catch( InvalidMessage e){
             System.out.println("Negative : Amount over $1000");
             Assert.assertEquals("Amount over $1000", e.getMessage());
 
         }
-
-//        Assert.assertEquals("invalid book: please try again", e.getMessage());
-//        if (Response == null){
-//            System.out.println(" return null  more 1000");
-//        }
-//        else{
-//            System.out.println(" return null less 1000");            
-//        }
-//        Assert.assertNotNull(Response);
-
-        
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Test
+    public void viewOwnRequestNegativeTest(){
+       
+        System.out.println(requestService.serviceViewRequest());
+        List<Request> result = requestService.serviceViewRequest();
+        Assert.assertEquals(result, result);
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
