@@ -48,7 +48,7 @@ public class RepTest {
     }
 
     @Test
-    public void updateBookPositiveTest() {
+    public void updateRequestPositiveTest() {
         Request updatedRequest = new Request(4,"Duong Nguyen", "mile fees", 400, "updated", "don't want to");
         Request result = requestDao.updateRequest(updatedRequest);
         Assert.assertEquals("updated", result.getStatus());

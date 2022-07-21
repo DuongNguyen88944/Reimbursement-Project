@@ -34,7 +34,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void serviceCreateRequestNegativeCheck() {
+    public void serviceRequestAmountNegativeCheck() {
 
         try {
             Request request = new Request("John", "Negative test more than 1000", 1001, "pending", "N/A ");
@@ -44,13 +44,12 @@ public class ServiceTest {
             Assert.fail();
         } catch (InvalidMessage e) {
             System.out.println("Negative : Amount over $1000");
-            Assert.assertEquals("invalid request", e.getMessage());
-
+            Assert.assertEquals("Invalid request", e.getMessage());
         }
     }
 
     @Test
-    public void viewOwnRequestNegativeTest() {
+    public void viewOwnRequestTest() {
 
         System.out.println(requestService.serviceViewRequest());
         List<Request> result = requestService.serviceViewRequest();
@@ -58,7 +57,7 @@ public class ServiceTest {
     }
 
     @Test
-    public void serviceUpdateRequestNegativeCheck() {
+    public void serviceManagerReasonNegativeCheck() {
 
         try {
             Request request = new Request("John",
@@ -71,6 +70,24 @@ public class ServiceTest {
         } catch (InvalidMessage e) {
             System.out.println("Negative : Reason cannot be more than 500 characters");
             Assert.assertEquals("Reason cannot be more than 500 characters", e.getMessage());
+
+        }
+    }
+
+    @Test
+    public void serviceEmployeeRequestNegativeCheck() {
+
+        try {
+            Request request = new Request("John",
+                    "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters!  ",
+                    100, "pending", "good reason");
+            Request response = requestService.serviceCreateRequest(request);
+            System.out.println(response.toString());
+           
+            Assert.fail();
+        } catch (InvalidMessage e) {
+            System.out.println("Negative : Request cannot be more than 500 characters");
+            Assert.assertEquals("Invalid request", e.getMessage());
 
         }
     }
