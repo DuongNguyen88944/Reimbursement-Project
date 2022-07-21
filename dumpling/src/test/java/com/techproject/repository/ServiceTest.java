@@ -51,8 +51,8 @@ public class ServiceTest {
     @Test
     public void viewOwnRequestTest() {
 
-        System.out.println(requestService.serviceViewRequest());
-        List<Request> result = requestService.serviceViewRequest();
+        System.out.println(requestService.serviceViewRequestWithBusinessRules());
+        List<Request> result = requestService.serviceViewRequestWithBusinessRules();
         Assert.assertEquals(result, result);
     }
 

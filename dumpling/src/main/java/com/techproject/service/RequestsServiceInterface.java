@@ -6,11 +6,11 @@ import com.techproject.entity.Request;
 
 public interface RequestsServiceInterface {
 
-    List<Request> serviceViewRequest();
+    List<Request> serviceViewRequestWithBusinessRules();
 
     Request serviceCreateRequest(Request newRequest);
     
     Request serviceUpdateRequest(Request updatedRequest); 
 
-
+    List<Request> serviceViewRequest();
 }
