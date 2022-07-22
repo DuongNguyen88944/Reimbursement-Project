@@ -10,25 +10,23 @@ import com.techproject.utils.BusinessRules;
 import io.javalin.Javalin;
 
 public class Main {
-    public static void main(String[] args){
-        Javalin app = Javalin.create(config ->{
+    public static void main(String[] args) {
+        Javalin app = Javalin.create(config -> {
             config.enableCorsForAllOrigins();
             config.enableDevLogging();
         });
-
 
         RequestDAOInterface requestDao = new RequestDAO();
         BusinessRules businessRules = new BusinessRules();
         RequestsServiceInterface requestService = new RequestsService(requestDao, businessRules);
         RequestController requestController = new RequestController(requestService);
-        
+
+        app.get("/request", requestController.viewRequest);
 
         app.post("/request", requestController.createRequest);
-        
+
         app.patch("/request/{id}", requestController.updateRequest);
 
- 
-        
         app.start();
     }
 }
