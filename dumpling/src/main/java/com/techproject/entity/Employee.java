@@ -14,7 +14,7 @@ public class Employee {
     private int id;
     private String first_name;
     private String last_name;
-    private String role;
+    private String e_role;
     private String e_username;
     private String e_password;
     
@@ -28,22 +28,27 @@ public class Employee {
     }
 
 
-    public Employee(String first_name, String last_name, String role, String e_username, String e_password) {
+    
+
+    public Employee(String first_name, String last_name, String e_role, String e_username, String e_password) {
         this.first_name = first_name;
         this.last_name = last_name;
-        this.role = role;
+        this.e_role = e_role;
         this.e_username = e_username;
         this.e_password = e_password;
     }
 
-    public Employee(int id, String first_name, String last_name, String role, String e_username, String e_password) {
+    
+
+    public Employee(int id, String first_name, String last_name, String e_role, String e_username, String e_password) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
-        this.role = role;
+        this.e_role = e_role;
         this.e_username = e_username;
         this.e_password = e_password;
     }
+
 
     public int getId() {
         return id;
@@ -69,12 +74,13 @@ public class Employee {
         this.last_name = last_name;
     }
 
-    public String getRole() {
-        return role;
+    public String getE_role() {
+        return e_role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+
+    public void setE_role(String e_role) {
+        this.e_role = e_role;
     }
 
     public String getE_username() {
@@ -93,11 +99,16 @@ public class Employee {
         this.e_password = e_password;
     }
 
+
     @Override
     public String toString() {
-        return "Employee [e_password=" + e_password + ", e_username=" + e_username + ", first_name=" + first_name
-                + ", id=" + id + ", last_name=" + last_name + ", role=" + role + "]";
+        return "Employee [e_password=" + e_password + ", e_role=" + e_role + ", e_username=" + e_username
+                + ", first_name=" + first_name + ", id=" + id + ", last_name=" + last_name + "]";
     }
+
+    
+
+    
 
     
    
