@@ -10,10 +10,10 @@
         <!-- replace this with your AWS link as well as whatever database you have set up:-->
         <!-- preface our AWS link with "jdbc:postgresql://"-->
         <!-- at the end of our link we specify the database, in this case pets2-->
-        <property name="connection.url">jdbc:postgresql://java-dumplings.ccqdgkjpifho.us-east-2.rds.amazonaws.com/postgres</property>
+        <property name="connection.url">jdbc:postgresql://java-dumplings.crwj0tj7fcsv.us-east-1.rds.amazonaws.com/postgres</property>
         <!-- replace credentials: -->
-        <property name="connection.username">dumplings</property>
-        <property name="connection.password">Indiana4</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">dumpling22</property>
         <!-- Keep the dialect the same because we're using postgres-->
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <!-- if we make changes to our java code, our database will automatically update-->

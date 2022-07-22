@@ -22,12 +22,11 @@ public class RequestController {
 
     public Handler viewRequest = ctx -> {
         List<Request> requests = this.requestService.serviceViewRequest();
-       
         String requestsJSON = this.gson.toJson(requests);
-       
         ctx.result(requestsJSON);
         ctx.status(200);
     };
+    
     public Handler createRequest = ctx -> {
         try {
             String json = ctx.body();
@@ -64,5 +63,21 @@ public class RequestController {
 
         }
     };
+
+    public Handler getRequestDetail = ctx -> {
+        
+            List<Request> requests = this.requestService.serviceViewRequest();
+            String requestsJSON = this.gson.toJson(requests);
+            ctx.result(requestsJSON);
+            ctx.status(200);
+    };
+
+        
+    
+
+
+
+
+
 
 }

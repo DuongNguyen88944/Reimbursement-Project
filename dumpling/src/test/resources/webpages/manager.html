@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manager Page</title>
+</head>
+<link rel="stylesheet" href="managerPageStyle.css">
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Request ID</th><th>Employee Name</th><th>Request Description</th><th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="tBody">
+        </tbody>
+    </table>
+    <br><br>
+    <input type="text" id="idInput" placeholder="Enter Request ID">
+    <input type="text" id="reasonInput" placeholder="Enter Reason">
+    <select name="a/rOption" id="optionsA/R">
+        <option value="Accept">Accept</option>
+        <option value="Reject">Reject</option>
+    </select>
+    <button id="saveButton" onclick="updateRequest()">SAVE</button>
+    <br><br>
+    <button onclick="signout()" id="outButton">SIGN OUT</button>
+</body>
+<script>
+    const idInput = document.getElementById("idInput");
+    const reasonInput = document.getElementById("reasonInput");
+    const optionAR = document.getElementById("optionsA/R");
+    const tBody = document.getElementById("tBody");
+    const baseURL = "http://localhost:8080/";
+
+    
+//Show Requests function
+    async function showRequest(){
+        let httpResponse = await fetch(`${baseURL}request`);
+        console.log(httpResponse);
+
+        if(httpResponse.status === 200){
+            let responseBody = await httpResponse.json();
+            responseBody.sort(function(a,b){return a.requestID-b.requestID});
+            console.log(responseBody);
+
+            if (responseBody.length > 0){ 
+                for (let object of responseBody){
+                    
+                        let tableRow = document.createElement("tr");
+                            tBody.appendChild(tableRow);
+                             
+                        // Request ID            
+                            let requestID = document.createElement("td"); 
+                            requestID.textContent = object.ticket_number;            
+                            tableRow.appendChild(requestID);
+                        
+                        // Employee Name
+                            let employeeName = document.createElement("td");
+                            employeeName.textContent = object.employee_name;
+                            tableRow.appendChild(employeeName);
+                        
+                        // Request Desc           
+                            let requestDesc = document.createElement("td");
+                            requestDesc.textContent = object.request_desc;            
+                            tableRow.appendChild(requestDesc);
+                        
+                        // Request Status           
+                            let requestStatus = document.createElement("td");  
+                            requestStatus.textContent = object.status;       
+                            tableRow.appendChild(requestStatus);    
+                }                   
+                 
+            }   else {
+                alert("No Request Found!")
+            }            
+        }                                         
+    } showRequest();           
+           
+// Update request function
+    async function updateRequest(){
+        if (optionAR.value == "Accept"){
+            let requestBody = {
+                status: document.getElementById("optionAR"),
+                manager_reason: document.getElementById("")
+            }
+
+        }
+    }
+    
+        
+            
+            
+    
+        
+    
+        
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function signout(){
+        window.location.href="";
+    }
+</script>
+</html>
