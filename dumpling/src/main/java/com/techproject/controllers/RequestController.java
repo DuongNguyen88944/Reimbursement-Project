@@ -1,7 +1,7 @@
 package com.techproject.controllers;
 
 import java.util.HashMap;
-
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
@@ -15,12 +15,20 @@ public class RequestController {
     private RequestsServiceInterface requestService;
     private Gson gson;
 
-    public RequestController(RequestsServiceInterface requestService){
+    public RequestController(RequestsServiceInterface requestService) {
         this.requestService = requestService;
         this.gson = new Gson();
     }
-    
-    public Handler createRequest = ctx ->{
+
+    public Handler viewRequest = ctx -> {
+        List<Request> requests = this.requestService.serviceViewRequest();
+       
+        String requestsJSON = this.gson.toJson(requests);
+       
+        ctx.result(requestsJSON);
+        ctx.status(200);
+    };
+    public Handler createRequest = ctx -> {
         try {
             String json = ctx.body();
             Request newRequest = this.gson.fromJson(json, Request.class);
@@ -34,12 +42,12 @@ public class RequestController {
             String messageJson = this.gson.toJson(message);
             ctx.result(messageJson);
             ctx.status(400);
-            
+
         }
     };
 
-    public Handler updateRequest = ctx ->{
-        try{
+    public Handler updateRequest = ctx -> {
+        try {
             String Json = ctx.body();
             Request updatedRequest = this.gson.fromJson(Json, Request.class);
             updatedRequest.setTicket_number(Integer.parseInt(ctx.pathParam("id")));
@@ -47,32 +55,14 @@ public class RequestController {
             String resultJson = this.gson.toJson(result);
             ctx.result(resultJson);
             ctx.status(200);
-        } catch (InvalidMessage e){
+        } catch (InvalidMessage e) {
             Map<String, String> message = new HashMap<>();
             message.put("message", e.getMessage());
             String messageJson = this.gson.toJson(message);
             ctx.result(messageJson);
             ctx.status(400);
-            
+
         }
     };
 
-
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
