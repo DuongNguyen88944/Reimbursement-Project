@@ -6,36 +6,49 @@
 <link rel="stylesheet" href="managerPageStyle.css">
 <body>
     
-    <table>
+    <table class ="requestTable" id="requestTable">
         <thead>
             <tr>
-                <th>Request ID</th><th>Employee Name</th><th>Request Description</th><th>Status</th>
+                <th>Request ID</th><th>Employee Name</th><th>Request Description</th><th>Request Amount</th><th>Status</th>
             </tr>
         </thead>
         <tbody id="tBody">
         </tbody>
     </table>
     <br><br>
-    <input type="text" id="idInput" placeholder="Enter Request ID">
-    <input type="text" id="reasonInput" placeholder="Enter Reason">
-    <select name="a/rOption" id="optionsA/R">
-        <option value="Accept">Accept</option>
-        <option value="Reject">Reject</option>
+    <select name="idInput" id="idInput">
+        <option>ID</option>
+        
     </select>
+    <input type="text" id="nameInput" placeholder="Employee Name">
+    <input type="text" id="requestInput" placeholder="Request Description">
+    <input type="text" id="amountInput" placeholder="Request Amount">
+     <select name="a/rOption" id="optionsA/R">
+        <option value="Accepted">Accept</option>
+        <option value="Rejected">Reject</option>
+    </select>
+    <input type="text" id="reasonInput" placeholder="Enter Reason">
     <button id="saveButton" onclick="updateRequest()">SAVE</button>
     <br><br>
     <button onclick="signout()" id="outButton">SIGN OUT</button>
 </body>
+
+   
 <script>
     const idInput = document.getElementById("idInput");
+    const nameInput = document.getElementById("nameInput");
+    const requestInput = document.getElementById("requestInput");
+    const amountInput = document.getElementById("amountInput");
     const reasonInput = document.getElementById("reasonInput");
     const optionAR = document.getElementById("optionsA/R");
     const tBody = document.getElementById("tBody");
     const baseURL = "http://localhost:8080/";
 
     
+    
 //Show Requests function
     async function showRequest(){
+
         let httpResponse = await fetch(`${baseURL}request`);
         console.log(httpResponse);
 
@@ -55,71 +68,113 @@
                             requestID.textContent = object.ticket_number;            
                             tableRow.appendChild(requestID);
                         
+                        // Request ID Selector   
+                            let requestIdSelector = document.createElement("option"); 
+                            requestIdSelector.value = object.ticket_number;
+                            requestIdSelector.textContent = object.ticket_number;            
+                            idInput.appendChild(requestIdSelector);
+                        
                         // Employee Name
                             let employeeName = document.createElement("td");
+                            employeeName.id = "employeeName";
                             employeeName.textContent = object.employee_name;
                             tableRow.appendChild(employeeName);
                         
                         // Request Desc           
                             let requestDesc = document.createElement("td");
+                            requestDesc.id = "requestDesc";
                             requestDesc.textContent = object.request_desc;            
                             tableRow.appendChild(requestDesc);
+                        
+                        // Request Amount 
+                            let requestAmount = document.createElement("td");
+                            requestAmount.id = "requestAmount";
+                            requestAmount.textContent = object.request_amount;
+                            tableRow.appendChild(requestAmount);
                         
                         // Request Status           
                             let requestStatus = document.createElement("td");  
                             requestStatus.textContent = object.status;       
-                            tableRow.appendChild(requestStatus);    
+                            tableRow.appendChild(requestStatus)
+                            ;    
                 }                   
                  
             }   else {
                 alert("No Request Found!")
+                
             }            
-        }                                         
+        }  else {
+            let responseBody = await httpResponse.json();
+            alert(requestBody.detail);
+        }                                       
     } showRequest();           
            
 // Update request function
     async function updateRequest(){
-        if (optionAR.value == "Accept"){
+       
+        tBody.innerHTML ="";
+        const idInput = document.getElementById("idInput");
+      
             let requestBody = {
-                status: document.getElementById("optionAR"),
-                manager_reason: document.getElementById("")
+                employee_name: document.getElementById("nameInput").value,
+                request_desc: document.getElementById("requestInput").value,
+                request_amount: document.getElementById("amountInput").value,
+                status: document.getElementById("optionsA/R").value,
+                manager_reason: document.getElementById("reasonInput").value
             }
-
+            let requestJSON = JSON.stringify(requestBody);
+            let config = {
+                method: "PATCH",
+                header:{'Content-Type':"application/json"},
+                body: requestJSON
+            }
+            let httpResponse = await fetch(`http://localhost:8080/request/${idInput.value}`,config);
+            if (httpResponse.status === 200){
+                let responseBody = await httpResponse.json();
+                alert("Request Successfully Updated!")
+            } else {
+                let responseBody = await httpResponse.json();
+                alert("Reason must be 500 words!")
+            }
+        showRequest();
         }
-    }
-    
-        
-            
-            
-    
-        
-    
-        
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     function signout(){
-        window.location.href="";
-    }
+        window.location.href="login.html";
+    }        
+        
+           
+         
+    
+    
 </script>
-</html>
+</html>   
+            
+            
+    
+        
+    
+        
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
