@@ -56,7 +56,7 @@ public class RequestController {
             ctx.status(200);
         } catch (InvalidMessage e) {
             Map<String, String> message = new HashMap<>();
-            message.put("message", e.getMessage());
+            message.put("message", "Invalid Reason");
             String messageJson = this.gson.toJson(message);
             ctx.result(messageJson);
             ctx.status(400);
@@ -64,14 +64,7 @@ public class RequestController {
         }
     };
 
-    public Handler getRequestDetail = ctx -> {
-        
-            List<Request> requests = this.requestService.serviceViewRequest();
-            String requestsJSON = this.gson.toJson(requests);
-            ctx.result(requestsJSON);
-            ctx.status(200);
-    };
-
+    
         
     
 
