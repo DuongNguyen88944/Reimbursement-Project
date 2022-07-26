@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="employee.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Page</title>
+</head>
+
+<body>
+    <h1>
+        <b>Employee Home Page</b>
+    </h1>
+    <p>
+        <b>User:</b>
+        <span id="user"></span>
+    </p>
+
+    <p id="result"></p>
+    <p id="sessionInfo"></p>
+
+    <!-- Here is the table folks!-->
+
+    <table border="2">
+        <tr>
+            <td>
+                <center><label for="select-description"><b>Request</b></label></center>
+                <textarea rows="5" cols="40" placeholder="Please write your request here" id="description" maxlength="500"></textarea>
+            </td>
+
+            <td>
+                <center><label for="inputmoney"><b>Amount</b></label></center>
+                $<input type="number" id="moneyrequest" min="0.00" max="1000.00" step="0.01" placeholder="0.00">
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="newRequest()">SUBMIT</button>
+    <button onclick="signout()" id="outButton">SIGN OUT</button>
+
+    <!--add CSS to push this table lower-->
+    <br><br><br><br><br>
+    <left><button id="hidebutton" onclick="showStatus()">Status Toggle</button>
+        <!-- Below is the table status of request-->
+        <table id="requeststatus" border="2" hidden="hidden">
+            <thead>
+                <tr>
+                    <td id="requestID">
+                        <center><label for="requestID"><b>Request Description</b></label></center>
+                    </td>
+    
+                    <td id="theStatus">
+                        <center><label for="theAmount"><b>Request Amount</b></label></center>
+                    </td>
+    
+                    <td id="theReason">
+                        <center><label for="theStatus"><b>Status</b></label></center>
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="requestsTableBody">
+
+            </tbody>
+        </table>
+</body>
+<script>
+    const baseURL = 'http://localhost:8080/';
+
+    // this function will let the employee to POST requests onto the API and have it sent to the Manager
+    async function newRequest() {
+        const employeeName = document.getElementById("fullname")
+
+        const description = document.getElementById("description").value;
+        const moneyRequest = document.getElementById("moneyrequest").value;
+
+        // needs to change.. not sure what the api format needs to be changed
+        const submitJSON = JSON.stringify({
+            employee_name: sessionStorage.getItem("username"),
+            request_desc: description,
+            request_amount: moneyRequest
+        });
+
+        const submit = {
+            method: "POST",
+            headers: { 'Content-Type': "application/JSON" },
+            body: submitJSON
+        }
+
+        const httpResponse = await fetch(`${baseURL}request`, submit);
+        console.log(httpResponse)
+
+        if (httpResponse.status === 201) { // CHANGE 201 success code to proper one
+            showRequest();
+            alert('Request sent!');
+        }
+    }
+
+    //Show Requests function
+    async function showRequest() {
+        const employeeName = sessionStorage.getItem("username");
+        let httpResponse = await fetch(`${baseURL}request/${employeeName}`);
+        console.log(httpResponse);
+
+        if (httpResponse.status === 200) {
+            const responseBody = await httpResponse.json();
+            responseBody.sort(function (a, b) { return a.requestID - b.requestID });
+            console.log(responseBody);
+            const tBody = document.getElementById('requestsTableBody');
+            tBody.innerHTML = ''; // clear out the table every time function is called
+            if (responseBody.length > 0) {
+                for (let object of responseBody) {
+
+                    let tableRow = document.createElement("tr");
+                    tBody.appendChild(tableRow);
+
+                    // Request Desc           
+                    let requestDesc = document.createElement("td");
+                    requestDesc.id = "requestDesc";
+                    requestDesc.textContent = object.request_desc;
+                    tableRow.appendChild(requestDesc);
+
+                    // Request Amount 
+                    let requestAmount = document.createElement("td");
+                    requestAmount.id = "requestAmount";
+                    requestAmount.textContent = object.request_amount;
+                    tableRow.appendChild(requestAmount);
+
+                    // Request Status           
+                    let requestStatus = document.createElement("td");
+                    const status =  object.status === null ? "Pending":  object.status;
+                    requestStatus.textContent = status;
+                    tableRow.appendChild(requestStatus);
+                }
+            } else {
+                alert("No Request Found!")
+            }
+        } else {
+            let responseBody = await httpResponse.json();
+            alert(requestBody.detail);
+        }
+    }
+
+    showRequest();
+
+    const showStatus = () => {
+        const element = document.getElementById("requeststatus");
+        const hidden = element.getAttribute("hidden");
+
+        if (hidden) {
+            element.removeAttribute("hidden");
+        } else {
+            element.setAttribute("hidden", "hidden");
+        }
+    }
+
+    // to transfer from one local html file to another you can use the window.location.href proper
+    // LOGOUT HERE
+    function signout() {
+        window.location.href = "login.html";
+    }
+
+    // FAKE LOGIN: remove later!!
+    sessionStorage.setItem("username", "Fabian A");
+    sessionStorage.setItem("fname", "Fabian");
+    sessionStorage.setItem("lname", "A");
+    // end FAKE LOGIN: remove later!!
+
+    // Display the username of the currently logged in user
+    const result1 = document.getElementById("user");
+    result1.textContent = `${sessionStorage.getItem("username")}`;
+</script>
+
+</html>
