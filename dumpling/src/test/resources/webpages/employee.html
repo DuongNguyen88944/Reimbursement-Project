@@ -11,7 +11,7 @@
 
 <body>
     <h1>
-        <b>Employee Home Page</b>
+        <b>Employee Page</b>
     </h1>
     <p>
         <b>User:</b>
@@ -27,7 +27,8 @@
         <tr>
             <td>
                 <center><label for="select-description"><b>Request</b></label></center>
-                <textarea rows="5" cols="40" placeholder="Please write your request here" id="description" maxlength="500"></textarea>
+                <textarea rows="5" cols="40" placeholder="Please write your request here" id="description"
+                    maxlength="500"></textarea>
             </td>
 
             <td>
@@ -50,13 +51,17 @@
                     <td id="requestID">
                         <center><label for="requestID"><b>Request Description</b></label></center>
                     </td>
-    
+
                     <td id="theStatus">
                         <center><label for="theAmount"><b>Request Amount</b></label></center>
                     </td>
-    
+
                     <td id="theReason">
                         <center><label for="theStatus"><b>Status</b></label></center>
+                    </td>
+
+                    <td id="theReason">
+                        <center><label for="managerReason"><b>Manager Reason</b></label></center>
                     </td>
                 </tr>
             </thead>
@@ -75,7 +80,7 @@
         const description = document.getElementById("description").value;
         const moneyRequest = document.getElementById("moneyrequest").value;
 
-        // needs to change.. not sure what the api format needs to be changed
+        
         const submitJSON = JSON.stringify({
             employee_name: sessionStorage.getItem("username"),
             request_desc: description,
@@ -91,7 +96,7 @@
         const httpResponse = await fetch(`${baseURL}request`, submit);
         console.log(httpResponse)
 
-        if (httpResponse.status === 201) { // CHANGE 201 success code to proper one
+        if (httpResponse.status === 201) { 
             showRequest();
             alert('Request sent!');
         }
@@ -129,7 +134,7 @@
 
                     // Request Status           
                     let requestStatus = document.createElement("td");
-                    const status =  object.status === null ? "Pending":  object.status;
+                    const status = object.status === null ? "Pending" : object.status;
                     requestStatus.textContent = status;
                     tableRow.appendChild(requestStatus);
                 }
@@ -158,13 +163,12 @@
     // to transfer from one local html file to another you can use the window.location.href proper
     // LOGOUT HERE
     function signout() {
-        window.location.href = "login.html";
+        window.location.href = "Identification.html";
     }
-
     // FAKE LOGIN: remove later!!
-    sessionStorage.setItem("username", "Fabian A");
-    sessionStorage.setItem("fname", "Fabian");
-    sessionStorage.setItem("lname", "A");
+    // sessionStorage.setItem("username", "Fabian A");
+    // sessionStorage.setItem("fname", "Fabian");
+    // sessionStorage.setItem("lname", "A");
     // end FAKE LOGIN: remove later!!
 
     // Display the username of the currently logged in user
@@ -173,4 +177,3 @@
 </script>
 
 </html>
-
