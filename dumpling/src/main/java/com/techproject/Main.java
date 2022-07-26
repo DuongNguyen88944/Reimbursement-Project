@@ -22,15 +22,19 @@ public class Main {
         RequestController requestController = new RequestController(requestService);
 
         app.get("/request", requestController.viewRequest);
-
+        
         app.get("/request/{name}", requestController.viewRequestWithBusinessRules);
-
+        
+        app.get("/requests/{id}",requestController.viewRequestBaseOnId);
+        
         app.post("/request", requestController.createRequest);
 
         app.patch("/request/{id}", requestController.updateRequest);
 
-       
-
         app.start();
+
+       
+        
+       
     }
 }

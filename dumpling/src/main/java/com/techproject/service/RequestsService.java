@@ -53,6 +53,13 @@ public class RequestsService implements RequestsServiceInterface {
         return this.requestDao.viewRequest();
     }
 
+    @Override
+    public List<Request> serviceViewRequestBaseOnId(int idInput) {
+        List<Request> requestList = requestDao.viewRequest();
+        List<Request> result = businessRule.viewOwnRequestId(requestList, idInput);
+        return result;
+    }
+
 
 
 

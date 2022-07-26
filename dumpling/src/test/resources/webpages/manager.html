@@ -17,19 +17,17 @@
     </table>
     <br><br>
     <div id="div">
-        <select name="idInput" id="idInput">
+        <select name="idInput" id="idInput" onchange="displayRequest(this.value)">
             
             
-        </select>
-        <input type="text" id="nameInput" placeholder="Employee Name">
-        <input type="text" id="requestInput" placeholder="Request Description">
-        <input type="text" id="amountInput" placeholder="Request Amount">
+        </select><br>
+       
         <select name="a/rOption" id="optionsA/R">
             <option value="Accepted">Accept</option>
             <option value="Rejected">Reject</option>
-        </select>
-        <input type="text" id="reasonInput" placeholder="Enter Reason">
-        <button id="saveButton" onclick="updateRequest()">SAVE</button>
+        </select><br>
+        <input type="text" id="reasonInput" placeholder="Enter Reason"><br>
+        <button id="saveButton" onclick="updateRequest()">SAVE</button><br>
         <br><br>
         <button onclick="signout()" id="outButton">SIGN OUT</button>
     </div>
@@ -38,9 +36,6 @@
    
 <script>
     const idInput = document.getElementById("idInput");
-    const nameInput = document.getElementById("nameInput");
-    const requestInput = document.getElementById("requestInput");
-    const amountInput = document.getElementById("amountInput");
     const reasonInput = document.getElementById("reasonInput");
     const optionAR = document.getElementById("optionsA/R");
     const tBody = document.getElementById("tBody");
@@ -50,10 +45,11 @@
     const baseURL = "http://localhost:8080/";
     
           
-             
+showRequest();
 //Show Requests function
     async function showRequest(){
-      idInput.innerHTML = "";
+        
+        idInput.innerHTML = "";
       
         let httpResponse = await fetch(`${baseURL}request`);
         console.log(httpResponse);
@@ -64,57 +60,22 @@
             console.log(responseBody);
 
             if (responseBody.length > 0){ 
+                    let title = document.createElement("option");
+                    title.textContent = "Request ID";
+                    idInput.appendChild(title);
              for (let object of responseBody){
                     if(object.status == "Pending" || object.status == null){
-                        let tableRow = document.createElement("tr");
-                            tableRow.id = "tableRow";
-                            tableRow.className = "insideTable";
-                            tBody.appendChild(tableRow);
-                             
-                        // Request ID            
-                            let requestID = document.createElement("td"); 
-                            requestID.textContent = object.ticket_number;  
-                            requestID.className = "insideTable" ;         
-                            tableRow.appendChild(requestID);
-                        
                         // Request ID Selector   
                             let requestIdSelector = document.createElement("option"); 
                             requestIdSelector.value = object.ticket_number;
                             requestIdSelector.textContent = object.ticket_number;  
-                            requestIdSelector.id = "idSelector";           
+                            requestIdSelector.id = "idSelector"; 
+                                   
                             idInput.appendChild(requestIdSelector);
-                        
-                        // Employee Name
-                            let employeeName = document.createElement("td");
-                            employeeName.id = "employeeName";
-                            employeeName.textContent = object.employee_name;
-                            employeeName.className = "insideTable" ; 
-                            tableRow.appendChild(employeeName);
-                        
-                        // Request Desc           
-                            let requestDesc = document.createElement("td");
-                            requestDesc.id = "requestDesc";
-                            requestDesc.textContent = object.request_desc;  
-                            requestDesc.className = "insideTable" ;           
-                            tableRow.appendChild(requestDesc);
-                        
-                        // Request Amount 
-                            let requestAmount = document.createElement("td");
-                            requestAmount.id = "requestAmount";
-                            requestAmount.textContent = object.request_amount;
-                            requestAmount.className = "insideTable" ; 
-                            tableRow.appendChild(requestAmount);
-                        
-                        // Request Status           
-                            let requestStatus = document.createElement("td");  
-                            requestStatus.textContent = object.status;    
-                            requestStatus.className = "insideTable" ;    
-                            tableRow.appendChild(requestStatus); 
-
-                    }  else if(object.status !== "Pending"){
+                        }  else if(object.status !== "Pending"){
                         null;
-                    }  
-                }
+                    } 
+                 }
             } else {
               alert("No Request Found!");
             }                  
@@ -122,17 +83,78 @@
             let responseBody = await httpResponse.json();
             alert(requestBody.detail);
         }                           
-    }; showRequest();                          
+    };                       
+                        
+// Display request per ID functions
+    async function displayRequest(){
+            tBody.innerHTML = "";
+            let httpResponse = await fetch(`${baseURL}requests/${idInput.value}`);
+            console.log(httpResponse);
+
+            if(httpResponse.status === 200){
+                let responseBody = await httpResponse.json();
+                console.log(responseBody);
+
+                
+
+                            let tableRow = document.createElement("tr");
+                            tableRow.id = "tableRow";
+                            tableRow.className = "insideTable";
+                            tBody.appendChild(tableRow);
+                             
+                        // Request ID            
+                            let requestID = document.createElement("td"); 
+                            requestID.textContent = responseBody[0].ticket_number;  
+                            requestID.className = "insideTable" ;         
+                            tableRow.appendChild(requestID);
+                            sessionStorage.setItem("id",requestID.textContent);
+                        
+                            // Employee Name
+                            let employeeName = document.createElement("td");
+                            employeeName.id = "employeeName";
+                            employeeName.textContent =responseBody[0].employee_name;
+                            employeeName.className = "insideTable" ; 
+                            tableRow.appendChild(employeeName);
+                            sessionStorage.setItem("name",employeeName.textContent);
+                        
+                        // Request Desc           
+                            let requestDesc = document.createElement("td");
+                            requestDesc.id = "requestDesc";
+                            requestDesc.textContent = responseBody[0].request_desc;  
+                            requestDesc.className = "insideTable" ;           
+                            tableRow.appendChild(requestDesc);
+                            sessionStorage.setItem("desc",requestDesc.textContent);
+                        
+                        // Request Amount 
+                            let requestAmount = document.createElement("td");
+                            requestAmount.id = "requestAmount";
+                            requestAmount.textContent = responseBody[0].request_amount;
+                            requestAmount.className = "insideTable" ; 
+                            tableRow.appendChild(requestAmount);
+                            sessionStorage.setItem("amount",requestAmount.textContent);
+                        
+                        // Request Status           
+                            let requestStatus = document.createElement("td");  
+                            requestStatus.textContent = responseBody[0].status;    
+                            requestStatus.className = "insideTable" ;    
+                            tableRow.appendChild(requestStatus); 
+                            
+            } else{
+                let responseBody = await httpResponse.json();
+                alert(requestBody.detail);
+            }
+    }                     
+                         
                      
 // Update request function
     async function updateRequest(){
         tBody.innerHTML ="";
         const idInput = document.getElementById("idInput");
-      
+        
             let requestBody = {
-                employee_name: document.getElementById("nameInput").value,
-                request_desc: document.getElementById("requestInput").value,
-                request_amount: document.getElementById("amountInput").value,
+                employee_name: sessionStorage.getItem("name"),
+                request_desc: sessionStorage.getItem("desc"),
+                request_amount: sessionStorage.getItem("amount"),
                 status: document.getElementById("optionsA/R").value,
                 manager_reason: document.getElementById("reasonInput").value
             }
@@ -147,9 +169,7 @@
                 let responseBody = await httpResponse.json();
                 alert("Request Successfully Updated!");
              
-                nameInput.value="";
-                requestInput.value="";
-                amountInput.value="";
+                
                 reasonInput.value="";
             } else {
                 let responseBody = await httpResponse.json();
