@@ -32,7 +32,6 @@ public class RequestsService implements RequestsServiceInterface {
 
     @Override
     public List<Request> serviceViewRequestWithBusinessRules(String name) {
-       
         List<Request> requestList = requestDao.viewRequest();
         List<Request> result = businessRule.viewOwnRequest(requestList, name);
         return result;

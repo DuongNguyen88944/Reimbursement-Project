@@ -23,6 +23,8 @@ public class Main {
 
         app.get("/request", requestController.viewRequest);
 
+        app.get("/request/{name}", requestController.viewRequestWithBusinessRules);
+
         app.post("/request", requestController.createRequest);
 
         app.patch("/request/{id}", requestController.updateRequest);
