@@ -56,6 +56,7 @@ public class BusinessRules  {
 
         }
     }
+    
     public List<Request> viewOwnRequest(List<Request> initialList, String name){
         List<Request> filterList = new ArrayList<>();
         for(Request request : initialList){

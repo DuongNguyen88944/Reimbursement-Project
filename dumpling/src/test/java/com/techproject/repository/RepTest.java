@@ -31,7 +31,7 @@ public class RepTest {
         List<Employee> employeeList = employeeDao.CheckLogin("user","pwd");
         System.out.println("CheckLogin method EmployyeDao :" + employeeList.size());
 
-        Assert.assertTrue(employeeList.size() == 1);
+        Assert.assertTrue(employeeList.size() > 0);
     } 
 
     @Test

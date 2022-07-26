@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.techproject.service.RequestsServiceInterface;
 import com.techproject.exceptions.InvalidMessage;
 import com.techproject.entity.Request;
@@ -17,11 +18,19 @@ public class RequestController {
 
     public RequestController(RequestsServiceInterface requestService) {
         this.requestService = requestService;
-        this.gson = new Gson();
+        this.gson = new GsonBuilder().serializeNulls().create();
     }
 
     public Handler viewRequest = ctx -> {
         List<Request> requests = this.requestService.serviceViewRequest();
+        String requestsJSON = this.gson.toJson(requests);
+        ctx.result(requestsJSON);
+        ctx.status(200);
+    };
+
+    public Handler viewRequestWithBusinessRules = ctx -> {
+        String employeeName = ctx.pathParam("name");
+        List<Request> requests = this.requestService.serviceViewRequestWithBusinessRules(employeeName);
         String requestsJSON = this.gson.toJson(requests);
         ctx.result(requestsJSON);
         ctx.status(200);
@@ -34,14 +43,13 @@ public class RequestController {
             Request result = this.requestService.serviceCreateRequest(newRequest);
             String resultJson = this.gson.toJson(result);
             ctx.result(resultJson);
-            ctx.status(200);
+            ctx.status(201);
         } catch (InvalidMessage e) {
             Map<String, String> message = new HashMap<>();
             message.put("message", e.getMessage());
             String messageJson = this.gson.toJson(message);
             ctx.result(messageJson);
             ctx.status(400);
-
         }
     };
 
@@ -56,28 +64,11 @@ public class RequestController {
             ctx.status(200);
         } catch (InvalidMessage e) {
             Map<String, String> message = new HashMap<>();
-            message.put("message", e.getMessage());
+            message.put("message", "Invalid Reason");
             String messageJson = this.gson.toJson(message);
             ctx.result(messageJson);
             ctx.status(400);
 
         }
     };
-
-    public Handler getRequestDetail = ctx -> {
-        
-            List<Request> requests = this.requestService.serviceViewRequest();
-            String requestsJSON = this.gson.toJson(requests);
-            ctx.result(requestsJSON);
-            ctx.status(200);
-    };
-
-        
-    
-
-
-
-
-
-
 }

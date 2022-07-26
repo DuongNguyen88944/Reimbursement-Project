@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(247, 246, 236);
+  }
+
+#hidebutton { 
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size:10px;
+}

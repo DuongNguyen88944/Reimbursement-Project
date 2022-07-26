@@ -1,3 +1,20 @@
-table {
+.requestTable{
     text-align: center;
+    width: 34.5%;
+    font-size: 12pt;
+    border: 2px solid black(235, 86, 110);
+    
+}
+
+th ,td, tr{
+    padding: 10px;
+    text-align: center;
+    border: solid 2px black;
+}
+
+.insideTable{
+    font-size: 12pt ; 
+    border: solid 2px black; 
+    color: black;
+    
 }

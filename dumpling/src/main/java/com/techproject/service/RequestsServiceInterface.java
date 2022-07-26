@@ -6,7 +6,7 @@ import com.techproject.entity.Request;
 
 public interface RequestsServiceInterface {
 
-    List<Request> serviceViewRequestWithBusinessRules();
+    List<Request> serviceViewRequestWithBusinessRules(String name);
 
     Request serviceCreateRequest(Request newRequest);
     

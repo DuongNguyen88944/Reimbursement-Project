@@ -1,4 +1,4 @@
-package com.techproject.repository;
+package com.techproject.service;
 
 import java.util.List;
 
@@ -8,9 +8,10 @@ import org.junit.Test;
 
 import com.techproject.entity.Request;
 import com.techproject.exceptions.InvalidMessage;
-
-import com.techproject.service.RequestsService;
-import com.techproject.service.RequestsServiceInterface;
+import com.techproject.repository.EmployeeDAO;
+import com.techproject.repository.EmployeeDAOInterface;
+import com.techproject.repository.RequestDAO;
+import com.techproject.repository.RequestDAOInterface;
 import com.techproject.utils.BusinessRules;
 
 //import junit.framework.Assert;
@@ -50,11 +51,9 @@ public class ServiceTest {
 
     @Test
     public void viewOwnRequestTest() {
-
-        System.out.println(requestService.serviceViewRequestWithBusinessRules());
-        List<Request> result = requestService.serviceViewRequestWithBusinessRules();
+        List<Request> result = requestService.serviceViewRequestWithBusinessRules("Create request Employee");
         Assert.assertEquals(result, result);
-    }
+    }    
 
     @Test
     public void serviceManagerReasonNegativeCheck() {
