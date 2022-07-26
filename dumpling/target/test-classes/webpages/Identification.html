@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Identification</title>
+    <style>
+        body {
+            color: red;
+            background-color: #82CAFF;
+        }
+        h1 {
+            background-color:#0000A5;
+            color:white;
+        }
+        </style></head>
+<body>
+    <center>
+        <h1> Welcome to your Dumpling Company</h1>
+        <h2> Please log in </h2>
+            <table>
+                <TR>
+                    <TD><label> User : </label></TD><td><input type="text" id="username"  placeholder="username"> <!--min="1" max="151"--></td>
+                </TR>
+                <TR>
+                    <TD><label> Password : </label></TD><td><input type="password" id="password" placeholder="password"></td>
+                </TR>
+                <TR>
+                    <TD></TD><td><button id="send"  onclick="login()">Log in</button></td>
+                </TR>
+            </table>
+    </center>
+</body>
+<script>
+
+async function login(){
+        // to let my api validate login information I need to attach the username and password to the http request
+        let loginInfo = {
+        e_username: document.getElementById("username").value,
+        e_password: document.getElementById("password").value        
+        }
+        // now that I have the login information I need to convert it into a JSON
+        let loginJSON = JSON.stringify(loginInfo);
+
+        // <!--   https://github.com/EricTrainingRev/220531-JWA/blob/main/Study-Guides/Week3.md  -->
+        // now I can set up my HTTP request configurations
+        let config = {
+            method:"PATCH", // method is a reference to the kind of request you are making (the verb): GET is the default
+            headers:{'Content-Type':"application/json"}, // some APIs will return an error message without this value included
+            body: loginJSON
+        }
+   
+        let httpResponse = await fetch("http://localhost:8080/login",config); // make sure to enter the url assigned to you
+        console.log(httpResponse);
+        //alert(httpResponse.json);
+        if(httpResponse.status === 200){ // 200 basically means request made successfully
+            let responseBody = await httpResponse.json(); // remember, json() returns a promise, so we use await to get the data we want out of it
+            
+            sessionStorage.setItem("username",loginInfo.e_username);
+            sessionStorage.setItem("password",loginInfo.e_password);
+
+            for (let obj of responseBody){
+            //alert("role :"+obj.e_role);
+                if(obj.e_role === "Employee"){
+                    //  Need to update the link for the manager and employee pages
+                    window.location.href = "C:/Project2/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/employee.html"; //Viet2 / Viet2
+                } else {
+                    window.location.href = "C:/Project2/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html"; // Eric2/123  Eric1/123
+                }
+            }
+        } else {
+            let responseBody = await httpResponse.json(); // remember, json() returns a promise, so we use await to get the data we want out of it
+            //let responseBody = await httpResponse.json();
+            alert(responseBody.message);
+        }
+
+    }
+
+//function TransferToPage2(){
+//    localStorage.setItem("number",input.value);
+//    alert(input.value);
+//    sessionStorage.setItem("sessionNum",sessionInput.value);
+//    alert(sessionInput.value);
+//    window.location.href="subfolder\\page-two.html" //<!--subfolder\\page-two.html-->
+//}
+
+</script>
+</html>
