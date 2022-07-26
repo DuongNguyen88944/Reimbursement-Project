@@ -16,21 +16,23 @@
         </tbody>
     </table>
     <br><br>
-    <select name="idInput" id="idInput">
-        <option>ID</option>
-        
-    </select>
-    <input type="text" id="nameInput" placeholder="Employee Name">
-    <input type="text" id="requestInput" placeholder="Request Description">
-    <input type="text" id="amountInput" placeholder="Request Amount">
-     <select name="a/rOption" id="optionsA/R">
-        <option value="Accepted">Accept</option>
-        <option value="Rejected">Reject</option>
-    </select>
-    <input type="text" id="reasonInput" placeholder="Enter Reason">
-    <button id="saveButton" onclick="updateRequest()">SAVE</button>
-    <br><br>
-    <button onclick="signout()" id="outButton">SIGN OUT</button>
+    <div id="div">
+        <select name="idInput" id="idInput">
+            
+            
+        </select>
+        <input type="text" id="nameInput" placeholder="Employee Name">
+        <input type="text" id="requestInput" placeholder="Request Description">
+        <input type="text" id="amountInput" placeholder="Request Amount">
+        <select name="a/rOption" id="optionsA/R">
+            <option value="Accepted">Accept</option>
+            <option value="Rejected">Reject</option>
+        </select>
+        <input type="text" id="reasonInput" placeholder="Enter Reason">
+        <button id="saveButton" onclick="updateRequest()">SAVE</button>
+        <br><br>
+        <button onclick="signout()" id="outButton">SIGN OUT</button>
+    </div>
 </body>
 
    
@@ -42,76 +44,88 @@
     const reasonInput = document.getElementById("reasonInput");
     const optionAR = document.getElementById("optionsA/R");
     const tBody = document.getElementById("tBody");
+    const div = document.getElementById("div");
+    const saveButton = document.getElementById("saveButton");
+    const requestTable =document.getElementById("requestTable");
     const baseURL = "http://localhost:8080/";
-
     
-    
+          
+             
 //Show Requests function
     async function showRequest(){
-
+      idInput.innerHTML = "";
+      
         let httpResponse = await fetch(`${baseURL}request`);
         console.log(httpResponse);
 
         if(httpResponse.status === 200){
             let responseBody = await httpResponse.json();
-            responseBody.sort(function(a,b){return a.requestID-b.requestID});
+            responseBody.sort(function(a,b){return a.ticket_number-b.ticket_number});
             console.log(responseBody);
 
             if (responseBody.length > 0){ 
-                for (let object of responseBody){
-                    
+             for (let object of responseBody){
+                    if(object.status == "Pending" || object.status == null){
                         let tableRow = document.createElement("tr");
+                            tableRow.id = "tableRow";
+                            tableRow.className = "insideTable";
                             tBody.appendChild(tableRow);
                              
                         // Request ID            
                             let requestID = document.createElement("td"); 
-                            requestID.textContent = object.ticket_number;            
+                            requestID.textContent = object.ticket_number;  
+                            requestID.className = "insideTable" ;         
                             tableRow.appendChild(requestID);
                         
                         // Request ID Selector   
                             let requestIdSelector = document.createElement("option"); 
                             requestIdSelector.value = object.ticket_number;
-                            requestIdSelector.textContent = object.ticket_number;            
+                            requestIdSelector.textContent = object.ticket_number;  
+                            requestIdSelector.id = "idSelector";           
                             idInput.appendChild(requestIdSelector);
                         
                         // Employee Name
                             let employeeName = document.createElement("td");
                             employeeName.id = "employeeName";
                             employeeName.textContent = object.employee_name;
+                            employeeName.className = "insideTable" ; 
                             tableRow.appendChild(employeeName);
                         
                         // Request Desc           
                             let requestDesc = document.createElement("td");
                             requestDesc.id = "requestDesc";
-                            requestDesc.textContent = object.request_desc;            
+                            requestDesc.textContent = object.request_desc;  
+                            requestDesc.className = "insideTable" ;           
                             tableRow.appendChild(requestDesc);
                         
                         // Request Amount 
                             let requestAmount = document.createElement("td");
                             requestAmount.id = "requestAmount";
                             requestAmount.textContent = object.request_amount;
+                            requestAmount.className = "insideTable" ; 
                             tableRow.appendChild(requestAmount);
                         
                         // Request Status           
                             let requestStatus = document.createElement("td");  
-                            requestStatus.textContent = object.status;       
-                            tableRow.appendChild(requestStatus)
-                            ;    
-                }                   
-                 
-            }   else {
-                alert("No Request Found!")
-                
-            }            
+                            requestStatus.textContent = object.status;    
+                            requestStatus.className = "insideTable" ;    
+                            tableRow.appendChild(requestStatus); 
+
+                    }  else if(object.status !== "Pending"){
+                        null;
+                    }  
+                }
+            } else {
+              alert("No Request Found!");
+            }                  
         }  else {
             let responseBody = await httpResponse.json();
             alert(requestBody.detail);
-        }                                       
-    } showRequest();           
-           
+        }                           
+    }; showRequest();                          
+                     
 // Update request function
     async function updateRequest(){
-       
         tBody.innerHTML ="";
         const idInput = document.getElementById("idInput");
       
@@ -131,15 +145,35 @@
             let httpResponse = await fetch(`http://localhost:8080/request/${idInput.value}`,config);
             if (httpResponse.status === 200){
                 let responseBody = await httpResponse.json();
-                alert("Request Successfully Updated!")
+                alert("Request Successfully Updated!");
+             
+                nameInput.value="";
+                requestInput.value="";
+                amountInput.value="";
+                reasonInput.value="";
             } else {
                 let responseBody = await httpResponse.json();
-                alert("Reason must be 500 words!")
-            }
+                alert("Reason must be 500 words!");
+                reasonInput.value="";
+            } 
         showRequest();
-        }
-    function signout(){
-        window.location.href="login.html";
+        }     
+                
+                
+        
+            
+            
+            
+               
+                
+            
+       
+    
+    
+    
+    
+        function signout(){
+        window.location.href="Identification.html";
     }        
         
            
