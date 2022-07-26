@@ -67,5 +67,14 @@ public class BusinessRules  {
         return filterList;
     }
 
-
+    //View Request base on id
+    public List<Request> viewOwnRequestId(List<Request> initialList, int idInput){
+        List<Request> filterList = new ArrayList<>();
+        for(Request request : initialList){
+          if(request.getTicket_number() == idInput){
+             filterList.add(request);
+          } 
+        } 
+        return filterList;
+    }
 }

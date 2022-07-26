@@ -71,4 +71,12 @@ public class RequestController {
 
         }
     };
+
+    public Handler viewRequestBaseOnId = ctx -> {
+        int idInput = Integer.parseInt(ctx.pathParam("id"));
+        List<Request> requests = this.requestService.serviceViewRequestBaseOnId(idInput);
+        String requestsJSON = this.gson.toJson(requests);
+        ctx.result(requestsJSON);
+        ctx.status(200);
+    };
 }

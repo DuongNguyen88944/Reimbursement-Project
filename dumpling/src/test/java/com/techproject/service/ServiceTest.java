@@ -52,9 +52,16 @@ public class ServiceTest {
     @Test
     public void viewOwnRequestTest() {
         List<Request> result = requestService.serviceViewRequestWithBusinessRules("Create request Employee");
+       
         Assert.assertEquals(result, result);
     }    
 
+    @Test
+    public void viewRequestByIdTest() {
+        List<Request> result = requestService.serviceViewRequestBaseOnId(30);
+        Assert.assertEquals(result, result);
+    }    
+    
     @Test
     public void serviceManagerReasonNegativeCheck() {
 
@@ -63,7 +70,7 @@ public class ServiceTest {
                     "good request ",
                     100, "pending", "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! ");
             Request response = requestService.serviceUpdateRequest(request);
-            System.out.println(response.toString());
+            
            
             Assert.fail();
         } catch (InvalidMessage e) {
@@ -81,7 +88,7 @@ public class ServiceTest {
                     "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters!  ",
                     100, "pending", "good reason");
             Request response = requestService.serviceCreateRequest(request);
-            System.out.println(response.toString());
+            
            
             Assert.fail();
         } catch (InvalidMessage e) {

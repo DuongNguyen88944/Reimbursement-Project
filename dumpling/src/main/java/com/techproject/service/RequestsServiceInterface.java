@@ -13,4 +13,6 @@ public interface RequestsServiceInterface {
     Request serviceUpdateRequest(Request updatedRequest); 
 
     List<Request> serviceViewRequest();
+
+    List<Request> serviceViewRequestBaseOnId(int idInput);
 }
