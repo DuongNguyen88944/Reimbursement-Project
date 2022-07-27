@@ -11,7 +11,7 @@
 
 <body>
     <h1>
-        <b>Employee Home Page</b>
+        <b>Employee Page</b>
     </h1>
     <p>
         <b>User:</b>
@@ -27,17 +27,18 @@
         <tr>
             <td>
                 <center><label for="select-description"><b>Request</b></label></center>
-                <textarea rows="5" cols="40" placeholder="Please write your request here" id="description" maxlength="500"></textarea>
+                <textarea rows="5" cols="40" placeholder="Please write your request here" id="description"
+                    maxlength="600"></textarea>
             </td>
 
             <td>
                 <center><label for="inputmoney"><b>Amount</b></label></center>
-                $<input type="number" id="moneyrequest" min="0.00" max="1000.00" step="0.01" placeholder="0.00">
+                $<input type="number" id="moneyrequest" min="0.00" max="2000.00" step="0.01" placeholder="0.00">
             </td>
         </tr>
     </table>
     <br>
-    <button onclick="newRequest()">SUBMIT</button>
+    <button onclick="newRequest()" id="submit">SUBMIT</button>
     <button onclick="signout()" id="outButton">SIGN OUT</button>
 
     <!--add CSS to push this table lower-->
@@ -47,16 +48,20 @@
         <table id="requeststatus" border="2" hidden="hidden">
             <thead>
                 <tr>
-                    <td id="requestID">
+                    <td id="requestDescriptionHeader">
                         <center><label for="requestID"><b>Request Description</b></label></center>
                     </td>
-    
-                    <td id="theStatus">
+
+                    <td id="requestAmountHeader">
                         <center><label for="theAmount"><b>Request Amount</b></label></center>
                     </td>
-    
-                    <td id="theReason">
-                        <center><label for="theStatus"><b>Status</b></label></center>
+
+                    <td id="requestStatusHeader">
+                        <center><label for="theStatus"><b>Request Status</b></label></center>
+                    </td>
+
+                    <td id="requestReasonHeader">
+                        <center><label for="managerReason"><b>Manager Reason</b></label></center>
                     </td>
                 </tr>
             </thead>
@@ -75,12 +80,22 @@
         const description = document.getElementById("description").value;
         const moneyRequest = document.getElementById("moneyrequest").value;
 
-        // needs to change.. not sure what the api format needs to be changed
+        if(description.length > 500) {
+            alert('Request description must be no more than 500 characters in length');
+            return;
+        }  
+
+        if(parseInt(moneyRequest) > 1000) {
+            alert('Request dollar amount must be no more than $1,000');
+            return;
+        }
+
         const submitJSON = JSON.stringify({
             employee_name: sessionStorage.getItem("username"),
             request_desc: description,
-            request_amount: moneyRequest
-            
+            request_amount: moneyRequest,
+            status: 'Pending',
+            manager_reason: 'N/A'
         });
 
         const submit = {
@@ -92,7 +107,7 @@
         const httpResponse = await fetch(`${baseURL}request`, submit);
         console.log(httpResponse)
 
-        if (httpResponse.status === 201) { // CHANGE 201 success code to proper one
+        if (httpResponse.status === 201) { 
             showRequest();
             alert('Request sent!');
         }
@@ -101,12 +116,12 @@
     //Show Requests function
     async function showRequest() {
         const employeeName = sessionStorage.getItem("username");
-        let httpResponse = await fetch(`${baseURL}request/${employeeName}`);
+        const httpResponse = await fetch(`${baseURL}request/${employeeName}`);
         console.log(httpResponse);
 
         if (httpResponse.status === 200) {
             const responseBody = await httpResponse.json();
-            responseBody.sort(function (a, b) { return a.requestID - b.requestID });
+            responseBody.sort(function (a, b) { return a.requestID - b.requestID});
             console.log(responseBody);
             const tBody = document.getElementById('requestsTableBody');
             tBody.innerHTML = ''; // clear out the table every time function is called
@@ -118,24 +133,27 @@
 
                     // Request Desc           
                     let requestDesc = document.createElement("td");
-                    requestDesc.id = "requestDesc";
                     requestDesc.textContent = object.request_desc;
                     tableRow.appendChild(requestDesc);
 
                     // Request Amount 
                     let requestAmount = document.createElement("td");
-                    requestAmount.id = "requestAmount";
                     requestAmount.textContent = object.request_amount;
                     tableRow.appendChild(requestAmount);
 
                     // Request Status           
                     let requestStatus = document.createElement("td");
-                    const status =  object.status === null ? "Pending":  object.status;
+                    const status = object.status === null ? "Pending" : object.status;
                     requestStatus.textContent = status;
                     tableRow.appendChild(requestStatus);
+                    
+                    // Request Amount 
+                    let managerReason = document.createElement("td");
+                    managerReason.textContent = object.manager_reason;
+                    tableRow.appendChild(managerReason);
                 }
             } else {
-                alert("No Request Found!")
+                alert("No Requests Found!")
             }
         } else {
             let responseBody = await httpResponse.json();
@@ -159,19 +177,15 @@
     // to transfer from one local html file to another you can use the window.location.href proper
     // LOGOUT HERE
     function signout() {
-        window.location.href = "login.html";
+        window.location.href = "Identification.html";
     }
-
-    // FAKE LOGIN: remove later!!
-    sessionStorage.setItem("username", "Fabian A");
-    sessionStorage.setItem("fname", "Fabian");
-    sessionStorage.setItem("lname", "A");
-    // end FAKE LOGIN: remove later!!
+    
 
     // Display the username of the currently logged in user
     const result1 = document.getElementById("user");
     result1.textContent = `${sessionStorage.getItem("username")}`;
+
+
+    
 </script>
-
 </html>
-

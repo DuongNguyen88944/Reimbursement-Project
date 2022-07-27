@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+import com.techproject.poms.Employee;
 import com.techproject.poms.Login;
 import com.techproject.poms.Manager;
 
@@ -26,7 +26,7 @@ public class TestRunner {
     public static WebDriverWait wait;
     public static Manager manager;
     public static Login login;
-
+    public static Employee employee;
     @BeforeClass public static void setup(){
         System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver();
@@ -36,7 +36,7 @@ public class TestRunner {
         login = new Login(driver);
 
         manager = new Manager(driver);
-
+        employee = new Employee(driver);
     }
 
     @AfterClass

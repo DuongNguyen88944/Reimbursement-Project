@@ -31,7 +31,9 @@ public class LoginSteps {
     @Given("The employee is on the login page")
     public void the_employee_is_on_the_login_page() {
         System.out.println("\n * The employee is on the login page");
-        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/Identification.html");
+
+        TestRunner.driver.get("File://C:/Users/Dulce/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpagesIdentification.html");
+
     }
         
     @When("The employee enters his correct username")

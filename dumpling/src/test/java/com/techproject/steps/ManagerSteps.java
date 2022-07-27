@@ -15,7 +15,7 @@ public class ManagerSteps {
     //accept
     @Given("The manager is on their custom page")
     public void the_manager_is_on_their_custom_page() {
-        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
+        TestRunner.driver.get("File://C:/Users/Dulce/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
     }
 
     @When("The manager select an request ID")
