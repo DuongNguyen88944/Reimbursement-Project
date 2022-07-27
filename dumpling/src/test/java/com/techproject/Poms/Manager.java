@@ -10,15 +10,6 @@ public class Manager {
         PageFactory.initElements(driver,this);
     }
 
-    @FindBy(id = "nameInput")
-    public WebElement nameInput;
-
-    @FindBy(id = "requestInput")
-    public WebElement requestInput;
-
-    @FindBy(id = "amountInput")
-    public WebElement amountInput;
-
     @FindBy(id = "reasonInput")
     public WebElement reasonInput ;
 
@@ -36,20 +27,6 @@ public class Manager {
         this.outButton.click();
     }
 
-    public void enterName(String name){
-        this.nameInput.clear();
-        this.nameInput.sendKeys(name);
-    }
-
-    public void enterRequest(String request){
-        this.requestInput.clear();
-        this.requestInput.sendKeys(request);
-    }
-    
-    public void enterAmount(int i){
-        this.amountInput.clear();
-        this.amountInput.sendKeys(String.valueOf(i));
-    }
 
     public void enterReason(String reason){
         this.reasonInput.clear();
