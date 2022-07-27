@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 import com.techproject.poms.Login;
-
-import com.techproject.Poms.Manager;
-
+import com.techproject.poms.Manager;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -30,11 +28,11 @@ public class TestRunner {
     public static Login login;
 
     @BeforeClass public static void setup(){
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/webpages/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
         driver = new ChromeDriver();
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, 5);
 
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         login = new Login(driver);
 
         manager = new Manager(driver);

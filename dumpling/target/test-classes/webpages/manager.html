@@ -5,7 +5,7 @@
 </head>
 <link rel="stylesheet" href="managerPageStyle.css">
 <body>
-    
+    <button onclick="signout()" id="outButton" class="outButton">SIGN OUT</button>
     <table class ="requestTable" id="requestTable">
         <thead>
             <tr>
@@ -16,21 +16,21 @@
         </tbody>
     </table>
     <br><br>
-    <div id="div">
-        <select name="idInput" id="idInput" onchange="displayRequest(this.value)">
+    <div id="div" class="div">
+        <select name="idInput" class="insideDiv" id="idInput" onchange="displayRequest(this.value)">
             
             
-        </select><br>
+        </select>
        
-        <select name="a/rOption" id="optionsA/R">
+        <select name="a/rOption" id="optionsA/R" class="insideDiv">
             <option value="Accepted">Accept</option>
             <option value="Rejected">Reject</option>
-        </select><br>
-        <input type="text" id="reasonInput" placeholder="Enter Reason"><br>
-        <button id="saveButton" onclick="updateRequest()">SAVE</button><br>
+        </select>
+        <input type="text" id="reasonInput" placeholder="Enter Reason" class="insideDiv">
+        <button id="saveButton" onclick="updateRequest()" class="insideDiv">SAVE</button>
         <br><br>
-        <button onclick="signout()" id="outButton">SIGN OUT</button>
     </div>
+    
 </body>
 
    

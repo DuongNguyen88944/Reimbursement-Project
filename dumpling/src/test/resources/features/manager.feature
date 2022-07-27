@@ -18,7 +18,7 @@ Feature: Manager should be able to view the reimbursement requests, accept/rejec
 
     
 
-    # Scenario: As a manager I want to sign out of my custom homepages
-    # Given The manager is on the custom homepage
-    # When  The employee click the Logout button 
-    # Then  The manager should be transfer back to the login page
+    Scenario: As a manager I want to sign out of my custom homepages
+    Given The manager is on the custom homepage
+    When  The employee click the Logout button 
+    Then  The manager should be transfer back to the login page
