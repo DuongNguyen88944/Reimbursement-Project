@@ -1,4 +1,4 @@
-package com.techproject.Poms;
+package com.techproject.poms;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

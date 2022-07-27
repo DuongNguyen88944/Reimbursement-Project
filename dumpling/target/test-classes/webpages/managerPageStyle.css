@@ -1,20 +1,47 @@
 .requestTable{
+    margin-left: 820px;
+    margin-top: 200px;
     text-align: center;
-    width: 34.5%;
-    font-size: 12pt;
-    border: 2px solid black(235, 86, 110);
+    width: 50%;
+    font-size: 15pt;
+    border: 2px solid rgb(171, 184, 2);
+    background-color: White;
     
 }
 
 th ,td, tr{
     padding: 10px;
     text-align: center;
-    border: solid 2px black;
+    border: solid 2px rgb(171, 184, 2);
+    color: rgb(171, 184, 2);
 }
 
 .insideTable{
-    font-size: 12pt ; 
-    border: solid 2px black; 
-    color: black;
+    font-size: 15pt ; 
+    border: solid 2px rgb(171, 184, 2); 
+    color: rgb(171, 184, 2);
+    background-color: white;
+    
+}
+
+body{
+    background-image: url("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/pictures/Untitled design (1).png");
+    background-size: 1950px 1125px;
+    background-repeat: no-repeat;
+   
+}
+
+.outButton{
+    font-size: 15pt;
+    border: 3px solid rgb(171, 184, 2);
+}
+
+.div{
+    margin-left: 1050px;
+}
+
+.insideDiv{
+    font-size: 15pt;
+    border: 2px solid rgb(70, 75, 4);
     
 }

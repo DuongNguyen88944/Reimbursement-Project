@@ -22,7 +22,7 @@ public class ManagerSteps {
     public void the_manager_select_an_request_ID() {
         
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("52");
+        testerOption.selectByVisibleText("161");
     }
     
     @When("The manager select the accept option")
@@ -48,7 +48,7 @@ public class ManagerSteps {
     @Given("The manager select an ID")
     public void the_manager_select_an_ID() {
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("53");
+        testerOption.selectByVisibleText("88");
     }
     @When("The manager see the request table")
     public void the_manager_see_the_request_table() {
@@ -73,5 +73,23 @@ public class ManagerSteps {
         String text = TestRunner.driver.switchTo().alert().getText();
         Assert.assertEquals("Request Successfully Updated!", text);
         TestRunner.driver.switchTo().alert().accept();
+    }
+
+    //logout
+    @Given("The manager is on the custom homepage")
+    public void the_manager_is_on_the_custom_homepage() {
+        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
+    }
+
+    @When("The employee click the Logout button")
+    public void the_employee_click_the_Logout_button() {
+       TestRunner.manager.clickOutButton();
+    }
+    
+    @Then("The manager should be transfer back to the login page")
+    public void the_manager_should_be_transfer_back_to_the_login_page() {
+        TestRunner.wait.until(ExpectedConditions.titleIs("Identification"));
+        String title = TestRunner.driver.getTitle();
+        Assert.assertEquals("Identification", title);
     }
 }
