@@ -63,4 +63,9 @@
   <testcase name="As an employee I want to view all the requests" classname="Employee should be able view and to create a reimbursement request" time="6.955"/>
   <testcase name="As an employee I want to be able to create a reimbursement request" classname="Employee should be able view and to create a reimbursement request" time="14.799"/>
   <testcase name="As a employee I want to sign out of my custom homepages" classname="Employee should be able view and to create a reimbursement request" time="13.431"/>
+  <testcase name="As a manager I want to sign in so I can view my custom homepages" classname="Users of my application should be able to login to their respective homepages" time="1.139"/>
+  <testcase name="As a employee I want to sign in so I can view my custom homepages" classname="Users of my application should be able to login to their respective homepages" time="0.822"/>
+  <testcase name="As a Manager I want to be able to view and accept the requests" classname="Manager should be able to view the reimbursement requests, accept/reject it and log out" time="1.278"/>
+  <testcase name="As a Manager I want to be able to view and reject the requests" classname="Manager should be able to view the reimbursement requests, accept/reject it and log out" time="1.106"/>
+  <testcase name="As a manager I want to sign out of my custom homepages" classname="Manager should be able to view the reimbursement requests, accept/reject it and log out" time="0.167"/>
 </testsuite>
