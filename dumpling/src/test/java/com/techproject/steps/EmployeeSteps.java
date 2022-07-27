@@ -12,11 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EmployeeSteps {
 
-    // @Given("The employee is on the custom homepage")
-    // public void the_employee_is_on_the_custom_homepage() {
-    // // Write code here that turns the phrase above into concrete actions
-    // throw new io.cucumber.java.PendingException();
-    // }
+   
     private String EmployeeUser;
     private String Employeepwd;
 
@@ -71,24 +67,7 @@ public class EmployeeSteps {
         String requestReasonHeaderText = TestRunner.employee.requestReasonHeader.getText();
         Assert.assertEquals("Manager Reason", requestReasonHeaderText);
 
-        // Check the text in each cell in the first row
-        // first cell
-        // String firstRowDescriptionText =
-        // TestRunner.employee.getFirstRowDescription();
-        // Assert.assertEquals("soda and candy", firstRowDescriptionText);
-
-        // Check the number of rows
-        // int numberOfRows = TestRunner.employee.getNumberOfRows();
-        // Assert.assertEquals(2, numberOfRows);
-
-        // 1. Make sure headers are right (correct text in correct column, by ID)
-        // 2. Make sure data in the first row is right:
-        // #requestsTableBody tr:first-child td:nth-child(1)
-        // #requestsTableBody tr:first-child td:nth-child(2)
-        // etc...
-        // Make sure the table has the right number of rows:
-        // #requestsTableBody tr (check the size of the list of elements selected by
-        // this selector)
+     
     }
 
     @When("The employee type in the reason")
@@ -160,7 +139,7 @@ public class EmployeeSteps {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
+           
             e.printStackTrace();
         }
     }
