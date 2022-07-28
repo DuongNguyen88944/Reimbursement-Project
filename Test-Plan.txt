@@ -31,39 +31,42 @@ User stories and associated unit/service tests
    As employee I want to be able to login 
     - Unit Testing 
         - Employee logging in
-            - Method: CheckLogin()                            Viet
+            - Method: CheckLogin()                                        Viet
     - Service Testing 
         - Username must be unique
-            - Method: checkUsername()                         DataBase will handle it
-
+            - Method: Handle by Database
+   
    As employee's I want to view the request
    - Unit Testing
-        - Employee's view their request                       Duong
-            - Method: requestsExist()
+        - Employee's view their request                                    Duong
+            - Method: viewRequest()
    - Service Testing
         - Employee must view their own request                
-            - Method: requestCheck()                          Duong
-
+            - Method: serviceViewRequestByName(String name)                Duong
+                      serviceViewRequestById(int idInput)
+    
     As an employee I want to create a request
     - Unit Testing
         - Employee create request
-            - Method: createRequest()                          Duong
+            - Method: createRequest()                                      Duong
     - Service Testing 
         - Request cannot exceed $1000
-            - Method: moneyLimit()                             Viet
+            - Method: reimbursementLessThanThousand(Request request)       Viet
         - Request cannot exceed 500 character
-            - Method: characterLimit()                         Fabian
+            - Method: requestLessThanFiveHundred(Request request)          Fabian
 
    As a manager I want to update the status of the request
     - Unit Testing
         - Manager update request status 
-            - Method: updateRequest()                           Fabian 
+            - Method: updateRequest()                                      Fabian 
     - Service Testing 
         - Request cannot exceed 500 character
-            - Method: characterLimit()                          Fabian
+            - Method: reasonLessThanFiveHundred()                          Fabian
 
 Integration Testing API (Each of the routes need 1 positive and 1 negative test for business rule(if applicable_))
 GET all request (Manager/Employee Pages)   (Fabian)
+GET request by name                        (Fabian)
+GET request by ID                          (Duong)
 POST create request (Employee Page)        (Duong)
 PATCH update request (Manager Page)        (Duong)
 PATCH login (Login Page)                   (Viet)
