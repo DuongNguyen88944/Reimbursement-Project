@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Identification</title>
-    <style>
+    <link rel="stylesheet" href="login.css">
+    <!-- <style>
         body {
             color: red;
             background-color: #82CAFF;
@@ -11,20 +12,19 @@
             background-color:#0000A5;
             color:white;
         }
-        </style></head>
+        </style></head> -->
 <body>
     <center>
-        <h1> Welcome to your Dumpling Company</h1>
-        <h2> Please log in </h2>
-            <table>
+        
+        <!-- <h2> Please log in </h2> -->
+            <table class="logintable">
                 <TR>
-                    <TD><label> User : </label></TD><td><input type="text" id="username"  placeholder="username"> <!--min="1" max="151"--></td>
-                </TR>
-                <TR>
-                    <TD><label> Password : </label></TD><td><input type="password" id="password" placeholder="password"></td>
-                </TR>
-                <TR>
-                    <TD></TD><td><button id="send"  onclick="login()">Log in</button></td>
+                    <td>
+                        <input type="text" id="username" class="inside" placeholder="username"> <!--min="1" max="151"--><br><br>
+                        <input type="password" id="password" class="inside" placeholder="password"><br><br>
+                        <button id="send"  class="inButton" onclick="login()">Log in</button>
+                    </td>
+
                 </TR>
             </table>
     </center>

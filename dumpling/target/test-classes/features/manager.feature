@@ -16,9 +16,7 @@ Feature: Manager should be able to view the reimbursement requests, accept/rejec
     When  The manager click the save button
     Then  The manager should see a reject confirmation message 
 
-    
-
-    Scenario: As a manager I want to sign out of my custom homepages
-    Given The manager is on the custom homepage
-    When  The employee click the Logout button 
-    Then  The manager should be transfer back to the login page
+    Scenario: As an manager I want to log out of my page
+    Given The manager is on their custom page
+    When  The manager click on the sign out button
+    Then  The manager should be send back to the login page

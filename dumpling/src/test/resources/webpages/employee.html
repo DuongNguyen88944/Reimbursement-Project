@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<link rel="stylesheet" href="managerPageStyle.css">
+<link rel="stylesheet" href="employee.css">
 
-=======
+
 
 <head>
-    <title>Employee Page</title>
+    <title class="title">Employee Page</title>
 </head>
 
 <body>
-    <h1>
-        <b>Employee Page</b>
-    </h1>
-    <p>
+    
+    <p class="userName">
         <b>User:</b>
         <span id="user"></span>
     </p>
@@ -23,7 +21,7 @@
 
     <!-- Here is the table folks!-->
 
-    <table border="2">
+    <table border="2" class="table">
         <tr>
             <td>
                 <center><label for="select-description"><b>Request</b></label></center>
@@ -38,14 +36,14 @@
         </tr>
     </table>
     <br>
-    <button onclick="newRequest()" id="submit">SUBMIT</button>
-    <button onclick="signout()" id="outButton">SIGN OUT</button>
+    <button onclick="newRequest()" id="submit" class="button">SUBMIT</button>
+    <button onclick="signout()" id="outButton"  class="outbutton">SIGN OUT</button>
 
     <!--add CSS to push this table lower-->
     <br><br><br><br><br>
-    <left><button id="hidebutton" onclick="showStatus()">Status Toggle</button>
+    <left><button id="hidebutton" onclick="showStatus()" class="toggleButton">Status Toggle</button>
         <!-- Below is the table status of request-->
-        <table id="requeststatus" border="2" hidden="hidden">
+        <table id="requeststatus" border="2" hidden="hidden" class="statusTable">
             <thead>
                 <tr>
                     <td id="requestDescriptionHeader">
@@ -107,7 +105,7 @@
         const httpResponse = await fetch(`${baseURL}request`, submit);
         console.log(httpResponse)
 
-        if (httpResponse.status === 201) { 
+        if (httpResponse.status === 200) { 
             showRequest();
             alert('Request sent!');
         }
@@ -153,7 +151,7 @@
                     tableRow.appendChild(managerReason);
                 }
             } else {
-                alert("No Requests Found!")
+                // alert("No Requests Found!")
             }
         } else {
             let responseBody = await httpResponse.json();

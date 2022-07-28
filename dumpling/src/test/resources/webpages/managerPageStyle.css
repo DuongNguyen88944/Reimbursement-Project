@@ -1,47 +1,57 @@
 .requestTable{
-    margin-left: 820px;
-    margin-top: 200px;
+    margin-left: 495px;
+    margin-top: 280px;
     text-align: center;
     width: 50%;
     font-size: 15pt;
-    border: 2px solid rgb(171, 184, 2);
-    background-color: White;
+    border: 5px solid yellow;
+    background-color: black;
     
 }
 
 th ,td, tr{
     padding: 10px;
     text-align: center;
-    border: solid 2px rgb(171, 184, 2);
-    color: rgb(171, 184, 2);
+    border: solid 2px yellow;
+    color: yellow;
 }
 
 .insideTable{
     font-size: 15pt ; 
-    border: solid 2px rgb(171, 184, 2); 
-    color: rgb(171, 184, 2);
-    background-color: white;
+    border: solid 2px yellow; 
+    color: yellow;
+    background-color: black;
     
 }
 
 body{
-    background-image: url("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/pictures/Untitled design (1).png");
+    background-image: url("C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/pictures/Background.png");
     background-size: 1950px 1125px;
     background-repeat: no-repeat;
    
 }
 
 .outButton{
-    font-size: 15pt;
-    border: 3px solid rgb(171, 184, 2);
+    font-size:20pt;
+    border: 3px solid rgb(224, 240, 6);
+    background-color: black;
+    border: solid 2px yellow;
+    color: yellow;
 }
 
 .div{
-    margin-left: 1050px;
+    margin-left: 695px;
 }
 
 .insideDiv{
     font-size: 15pt;
-    border: 2px solid rgb(70, 75, 4);
+    border: 3px solid rgb(224, 240, 6);
     
+}
+
+.saveButton{
+    background-color: black;
+    border: solid 2px yellow;
+    color: yellow;
+    font-size: 16pt;
 }

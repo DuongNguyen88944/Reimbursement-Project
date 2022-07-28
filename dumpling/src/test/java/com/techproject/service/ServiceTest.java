@@ -20,81 +20,81 @@ public class ServiceTest {
     public static RequestDAOInterface requestDao;
     public static RequestsServiceInterface requestService;
     public static EmployeeDAOInterface employeeDao;
-
     public static BusinessRules businessRules;
+    
 
     @BeforeClass
     public static void setup() {
-
         requestDao = new RequestDAO();
         businessRules = new BusinessRules();
         requestService = new RequestsService(requestDao, businessRules);
-
         employeeDao = new EmployeeDAO();
+    }    
+        
 
-    }
+    
 
     @Test
     public void serviceRequestAmountNegativeCheck() {
 
         try {
-            Request request = new Request("John", "Negative test more than 1000", 1001, "pending", "N/A ");
+            Request request = new Request("Fabian A", "Service Layer: Negative Test for request amount", 1001, "Pending", "N/A ");
             Request response = requestService.serviceCreateRequest(request);
             System.out.println(response.toString());
             // Assert.fail("Bussiness rule Passed");
             Assert.fail();
         } catch (InvalidMessage e) {
-            System.out.println("Negative : Amount over $1000");
             Assert.assertEquals("Invalid request", e.getMessage());
-        }
-    }
-
+        }    
+    }    
+    
     @Test
     public void viewOwnRequestTest() {
         List<Request> result = requestService.serviceViewRequestWithBusinessRules("Create request Employee");
-       
         Assert.assertEquals(result, result);
-    }    
-
+    }   
+     
     @Test
     public void viewRequestByIdTest() {
         List<Request> result = requestService.serviceViewRequestBaseOnId(30);
         Assert.assertEquals(result, result);
+    }      
+
+    @Test
+    public void serviceManagerReasonNegativeCheck() {
+        try {
+            Request request = new Request(1,"Fabian A",
+                    "Service Layer: Negative test for manager reason ",
+                    100, "Pending", "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! ");
+            Request response = requestService.serviceUpdateRequest(request);
+            Assert.fail();
+        } catch (InvalidMessage e) {
+            Assert.assertEquals("Reason cannot be more than 500 characters", e.getMessage());
+        }
     }    
     
     @Test
-    public void serviceManagerReasonNegativeCheck() {
-
-        try {
-            Request request = new Request("John",
-                    "good request ",
-                    100, "pending", "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! ");
-            Request response = requestService.serviceUpdateRequest(request);
-            
-           
-            Assert.fail();
-        } catch (InvalidMessage e) {
-            System.out.println("Negative : Reason cannot be more than 500 characters");
-            Assert.assertEquals("Reason cannot be more than 500 characters", e.getMessage());
-
-        }
-    }
-
-    @Test
     public void serviceEmployeeRequestNegativeCheck() {
-
         try {
-            Request request = new Request("John",
+            Request request = new Request("Fabian A",
                     "Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters! Negative test more than 500 characters!  ",
-                    100, "pending", "good reason");
+                    100, "Pending", "N/A");
             Request response = requestService.serviceCreateRequest(request);
-            
-           
             Assert.fail();
         } catch (InvalidMessage e) {
-            System.out.println("Negative : Request cannot be more than 500 characters");
-            Assert.assertEquals("Invalid request", e.getMessage());
-
-        }
+           Assert.assertEquals("Invalid request", e.getMessage());
+        }    
     }
-}
+            
+    
+}            
+           
+            
+        
+            
+            
+        
+   
+
+    
+
