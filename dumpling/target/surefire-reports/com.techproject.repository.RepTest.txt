@@ -1,4 +1,14 @@
 -------------------------------------------------------------------------------
 Test set: com.techproject.repository.RepTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.413 s - in com.techproject.repository.RepTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.735 s <<< FAILURE! - in com.techproject.repository.RepTest
+com.techproject.repository.RepTest  Time elapsed: 3.732 s  <<< ERROR!
+javax.persistence.PersistenceException: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.techproject.repository.RepTest.setup(RepTest.java:23)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.techproject.repository.RepTest.setup(RepTest.java:23)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "requests_pkey"
+  Detail: Key (ticket_number)=(4) already exists.
+	at com.techproject.repository.RepTest.setup(RepTest.java:23)
+

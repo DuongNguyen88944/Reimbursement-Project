@@ -27,7 +27,7 @@
             <option value="Rejected">Reject</option>
         </select>
         <input type="text" id="reasonInput" placeholder="Enter Reason" class="insideDiv">
-        <button id="saveButton" onclick="updateRequest()" class="insideDiv">SAVE</button>
+        <button id="saveButton" onclick="updateRequest()" class="saveButton">SAVE</button>
         <br><br>
     </div>
     
@@ -179,8 +179,11 @@ showRequest();
         showRequest();
         }     
                 
-                
-        
+         function signout(){
+        window.location.href="Identification.html";
+    }               
+</script>
+</html>         
             
             
             
@@ -192,16 +195,13 @@ showRequest();
     
     
     
-        function signout(){
-        window.location.href="Identification.html";
-    }        
+        
         
            
          
     
     
-</script>
-</html>   
+  
             
             
     

@@ -24,7 +24,7 @@ public class RequestsService implements RequestsServiceInterface {
 
     @Override
     public Request serviceCreateRequest(Request newRequest) {
-        if (this.businessRule.reimbursmentLessThousand(newRequest) && this.businessRule.lessThanFiveHundred(newRequest)){
+        if (this.businessRule.reimbursmentLessThanThousand(newRequest) && this.businessRule.requestLessThanFiveHundred(newRequest)){
             return this.requestDao.createRequest(newRequest);
         } else{
             throw new InvalidMessage("Invalid request");        }
@@ -33,14 +33,14 @@ public class RequestsService implements RequestsServiceInterface {
     @Override
     public List<Request> serviceViewRequestWithBusinessRules(String name) {
         List<Request> requestList = requestDao.viewRequest();
-        List<Request> result = businessRule.viewOwnRequest(requestList, name);
+        List<Request> result = businessRule.viewOwnRequestByName(requestList, name);
         return result;
     }
 
 
     @Override
     public Request serviceUpdateRequest(Request updatedRequest) {
-        if(this.businessRule.managerLessThanFiveHundred(updatedRequest)){
+        if(this.businessRule.reasonLessThanFiveHundred(updatedRequest)){
             return this.requestDao.updateRequest(updatedRequest);
         }else{
             throw new InvalidMessage("Reason cannot be more than 500 characters");
@@ -56,7 +56,7 @@ public class RequestsService implements RequestsServiceInterface {
     @Override
     public List<Request> serviceViewRequestBaseOnId(int idInput) {
         List<Request> requestList = requestDao.viewRequest();
-        List<Request> result = businessRule.viewOwnRequestId(requestList, idInput);
+        List<Request> result = businessRule.viewOwnRequestById(requestList, idInput);
         return result;
     }
 

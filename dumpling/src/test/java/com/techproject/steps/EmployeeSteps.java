@@ -12,30 +12,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class EmployeeSteps {
 
-   
-    private String EmployeeUser;
-    private String Employeepwd;
-
-    public EmployeeSteps() {
-        this.EmployeeUser = "user";
-        this.Employeepwd = "pwd";
-    }
 
     @Given("The employee is on their custom page")
     public void the_employee_is_on_their_custom_page() {
         // go to login page, then log in
-        TestRunner.driver.get(
-                "File://C:/Users/Dulce/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/Identification.html");
-        System.out.println("The employee enters his correct username");
-        TestRunner.login.enterUsername(EmployeeUser);
-
-        System.out.println("The employee enters his correct password");
-        TestRunner.login.enterPassword(Employeepwd);
-
-        TestRunner.login.clickButton();
-
+        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/employee.html");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,12 +28,12 @@ public class EmployeeSteps {
     public void the_employee_click_on_the_toggle_button() {
         TestRunner.employee.toggleStatus();
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
+    }    
+        
 
     @Then("The requests table should be display")
     public void the_requests_table_should_be_display() {
@@ -77,12 +60,12 @@ public class EmployeeSteps {
         userMessageField.sendKeys("Pizza Party!!!!");
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
-        }
-    }
+         }
+    }    
+       
 
     @When("The employee type in the amount of money")
     public void the_employee_type_in_the_amount_of_money() {
@@ -90,23 +73,23 @@ public class EmployeeSteps {
         WebElement firstInputField = TestRunner.driver.findElement(firstInputFieldLocator);
         firstInputField.sendKeys("200");
         try {
-            Thread.sleep(3000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
+    }    
+        
 
     @When("The employee click on the submit button")
     public void the_employee_click_on_the_submit_button() {
         TestRunner.employee.submitRequest();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+           e.printStackTrace();
         }
     }
+            
 
     @Then("The employee should see a confirmation message")
     public void the_employee_should_see_a_confirmation_message() {
@@ -115,32 +98,30 @@ public class EmployeeSteps {
         TestRunner.driver.switchTo().alert().accept();
     }
 
-    @When("The employee click the Logout button")
-    public void the_employee_click_the_Logout_button() {
-       TestRunner.employee.signOut();
-       try {
-        Thread.sleep(5000);
-    } catch (InterruptedException e) {
-        // TODO Auto-generated catch block
+    @When("The employee click on the sign out button")
+    public void the_employee_click_on_the_sign_out_button() {
+        TestRunner.employee.signOut();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
         e.printStackTrace();
+        }
     }
 
-    }
-
-    @Then("The employee should be transfer back to the login page")
-    public void the_employee_should_be_transfer_back_to_the_login_page() {
-        
-      
+    @Then("The employee should be send back to the login page")
+    public void the_employee_should_be_send_back_to_the_login_page() {
         TestRunner.wait.until(ExpectedConditions.titleIs("Identification"));
         String title = TestRunner.driver.getTitle();
-        System.out.println("title :" + title );
+      
         Assert.assertEquals("Identification", title);
-
+      
         try {
-            Thread.sleep(5000);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
            
             e.printStackTrace();
         }
     }
 }
+
+        

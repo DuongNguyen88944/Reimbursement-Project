@@ -1,5 +1,7 @@
 body {
-    background-color: rgb(247, 246, 236);
+  background-image: url("C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/pictures/Background.png");
+  background-size: 1950px 1125px;
+  background-repeat: no-repeat;
   }
 
 #hidebutton { 
@@ -10,4 +12,57 @@ body {
     text-align: center;
     display: inline-block;
     font-size:10px;
+}
+
+.title{
+  color: Yellow;
+}
+
+.table{
+  border: solid yellow 3px;
+  color: yellow;
+  margin-left: 750px;
+  margin-top: 260px;
+  background-color: black;
+}
+
+.button{
+  margin-left: 845px ;
+  font-size: 20pt;
+  color: yellow;
+  background-color: black;
+  border: solid 1px yellow;
+}
+
+.outbutton{
+  font-size: 20pt;
+  color: yellow;
+  background-color: black;
+  border: solid 1px yellow;
+  
+}
+
+.userName{
+  color: yellow;
+  font-size: 15pt;
+  border: solid 1px yellow;
+  background-color: black;
+  margin-right: 1795px;
+  text-align: center;
+}
+
+.toggleButton{
+  margin-left: 925px;
+  margin-top: 1px;
+  margin-bottom: 10px;
+  
+
+}
+
+.statusTable{
+  border: solid 1px yellow;
+  background-color: black;
+  color: yellow;
+  margin-left: 690px;
+  width:30%
 }

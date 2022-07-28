@@ -1,0 +1,28 @@
+body{
+    background-size: 1925px 950px;
+    background-repeat: no-repeat;
+    background-image: url("C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/pictures/loginBackground.png");
+}
+
+.logintable{
+    border: 7px black solid;
+    margin-top: 370px;
+    margin-left: 5px;
+    width: 25.3%;
+    height:200px;
+    background-color: black;
+    text-align: center;
+   
+}
+
+.inside{
+    font-size: 20pt;
+    border: 4px solid rgb(226, 212, 18);
+}
+
+.inButton{
+  font-size: 20pt;
+  color: yellow;
+  background-color: black;
+  border: solid 1px yellow;
+}

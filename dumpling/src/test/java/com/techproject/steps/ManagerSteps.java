@@ -15,14 +15,14 @@ public class ManagerSteps {
     //accept
     @Given("The manager is on their custom page")
     public void the_manager_is_on_their_custom_page() {
-        TestRunner.driver.get("File://C:/Users/Dulce/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
+        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
     }
 
     @When("The manager select an request ID")
     public void the_manager_select_an_request_ID() {
         
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("161");
+        testerOption.selectByVisibleText("3");
     }
     
     @When("The manager select the accept option")
@@ -48,7 +48,7 @@ public class ManagerSteps {
     @Given("The manager select an ID")
     public void the_manager_select_an_ID() {
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("88");
+        testerOption.selectByVisibleText("4");
     }
     @When("The manager see the request table")
     public void the_manager_see_the_request_table() {
@@ -75,19 +75,13 @@ public class ManagerSteps {
         TestRunner.driver.switchTo().alert().accept();
     }
 
-    //logout
-    @Given("The manager is on the custom homepage")
-    public void the_manager_is_on_the_custom_homepage() {
-        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/manager.html");
+    @When("The manager click on the sign out button")
+    public void the_manager_click_on_the_sign_out_button() {
+        TestRunner.manager.clickOutButton();
     }
 
-    @When("The employee click the Logout button")
-    public void the_employee_click_the_Logout_button() {
-       TestRunner.manager.clickOutButton();
-    }
-    
-    @Then("The manager should be transfer back to the login page")
-    public void the_manager_should_be_transfer_back_to_the_login_page() {
+    @Then("The manager should be send back to the login page")
+    public void the_manager_should_be_send_back_to_the_login_page() {
         TestRunner.wait.until(ExpectedConditions.titleIs("Identification"));
         String title = TestRunner.driver.getTitle();
         Assert.assertEquals("Identification", title);

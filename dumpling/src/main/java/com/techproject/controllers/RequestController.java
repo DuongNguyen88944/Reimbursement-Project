@@ -43,7 +43,7 @@ public class RequestController {
             Request result = this.requestService.serviceCreateRequest(newRequest);
             String resultJson = this.gson.toJson(result);
             ctx.result(resultJson);
-            ctx.status(201);
+            ctx.status(200);
         } catch (InvalidMessage e) {
             Map<String, String> message = new HashMap<>();
             message.put("message", e.getMessage());

@@ -17,18 +17,15 @@ public class RepTest {
     
     @BeforeClass
     public static void setup(){
-
         requestDao = new RequestDAO();
         employeeDao = new EmployeeDAO();
-
-        Request setupUpdateRequest = new Request(1,"Test Employee", "Request description", 500, "Pending", "N/A");
-        requestDao.createRequest(setupUpdateRequest);
-
+      
     }
+        
 
-     @Test
+    @Test
     public void CheckLoginExist(){
-        List<Employee> employeeList = employeeDao.CheckLogin("user","pwd");
+        List<Employee> employeeList = employeeDao.CheckLogin("Manager","password");
         System.out.println("CheckLogin method EmployyeDao :" + employeeList.size());
 
         Assert.assertTrue(employeeList.size() > 0);
@@ -41,17 +38,19 @@ public class RepTest {
     }
 
     @Test
-    public void createPositiveRequests() {
-        Request testRequest = new Request("Create request Employee","Testing fees", 400, "Pending", "N/A");
+    public void createRequestPositiveTest() {
+        Request testRequest = new Request(2,"Fabian A","Create request repository layer", 600, "Pending", "N/A");
         Request result = requestDao.createRequest(testRequest);
         Assert.assertNotNull(result.getTicket_number());
     }
 
     @Test
     public void updateRequestPositiveTest() {
-        Request updatedRequest = new Request(1,"Test Employee", "Request description", 400, "Updated", "Acceptable Request");
+        Request updatedRequest = new Request(1,"Fabian A", "Updated request repository layer", 500, "Accepted", "Acceptable Request");
         Request result = requestDao.updateRequest(updatedRequest);
-        Assert.assertEquals("Updated", result.getStatus());
+        Assert.assertEquals("Accepted", result.getStatus());
     }
+
+    
 
 }

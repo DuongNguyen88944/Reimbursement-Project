@@ -17,10 +17,10 @@ public class BusinessRules  {
     public static EmployeeDAOInterface employeeDao  = new EmployeeDAO();
 
     
-
+    // Check for unique Employee
     public boolean checkUniqueEmployee(Employee employee){
         
-        List<Employee> employeeList = employeeDao.CheckLogin("user","pwd");
+        List<Employee> employeeList = employeeDao.CheckLogin("Manager","password");
         if(employeeList.size() == 1){
             return true;
         }else{
@@ -29,7 +29,8 @@ public class BusinessRules  {
     
     }
 
-    public boolean reimbursmentLessThousand(Request request){
+    //Request amount less than $1000
+    public boolean reimbursmentLessThanThousand(Request request){
         if (request.getRequest_amount() <= 1000){
             return true;
         }
@@ -38,8 +39,8 @@ public class BusinessRules  {
         }
     } 
 
-  
-    public boolean lessThanFiveHundred(Request request) {
+    //Request description less than 500 words
+    public boolean requestLessThanFiveHundred(Request request) {
         if (request.getRequest_desc().length() <= 500 ) {
             return true;
         } else {
@@ -48,7 +49,8 @@ public class BusinessRules  {
         }
     }
 
-    public boolean managerLessThanFiveHundred(Request request) {
+    // Manager Reason Less Than 500 words
+    public boolean reasonLessThanFiveHundred(Request request) {
         if (request.getManager_reason().length() <= 500 ) {
             return true;
         } else {
@@ -57,7 +59,8 @@ public class BusinessRules  {
         }
     }
     
-    public List<Request> viewOwnRequest(List<Request> initialList, String name){
+    //View Request Base On Name
+    public List<Request> viewOwnRequestByName(List<Request> initialList, String name){
         List<Request> filterList = new ArrayList<>();
         for(Request request : initialList){
           if(request.getEmployee_name().equals(name)){
@@ -67,8 +70,8 @@ public class BusinessRules  {
         return filterList;
     }
 
-    //View Request base on id
-    public List<Request> viewOwnRequestId(List<Request> initialList, int idInput){
+    //View Request Base On Name
+    public List<Request> viewOwnRequestById(List<Request> initialList, int idInput){
         List<Request> filterList = new ArrayList<>();
         for(Request request : initialList){
           if(request.getTicket_number() == idInput){
