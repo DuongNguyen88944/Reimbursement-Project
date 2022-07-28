@@ -30,7 +30,7 @@ public class RequestController {
 
     public Handler viewRequestWithBusinessRules = ctx -> {
         String employeeName = ctx.pathParam("name");
-        List<Request> requests = this.requestService.serviceViewRequestWithBusinessRules(employeeName);
+        List<Request> requests = this.requestService.serviceViewRequestByName(employeeName);
         String requestsJSON = this.gson.toJson(requests);
         ctx.result(requestsJSON);
         ctx.status(200);
@@ -74,7 +74,7 @@ public class RequestController {
 
     public Handler viewRequestBaseOnId = ctx -> {
         int idInput = Integer.parseInt(ctx.pathParam("id"));
-        List<Request> requests = this.requestService.serviceViewRequestBaseOnId(idInput);
+        List<Request> requests = this.requestService.serviceViewRequestById(idInput);
         String requestsJSON = this.gson.toJson(requests);
         ctx.result(requestsJSON);
         ctx.status(200);
