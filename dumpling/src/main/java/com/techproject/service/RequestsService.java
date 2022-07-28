@@ -31,7 +31,7 @@ public class RequestsService implements RequestsServiceInterface {
     }
 
     @Override
-    public List<Request> serviceViewRequestWithBusinessRules(String name) {
+    public List<Request> serviceViewRequestByName(String name) {
         List<Request> requestList = requestDao.viewRequest();
         List<Request> result = businessRule.viewOwnRequestByName(requestList, name);
         return result;
@@ -54,7 +54,7 @@ public class RequestsService implements RequestsServiceInterface {
     }
 
     @Override
-    public List<Request> serviceViewRequestBaseOnId(int idInput) {
+    public List<Request> serviceViewRequestById(int idInput) {
         List<Request> requestList = requestDao.viewRequest();
         List<Request> result = businessRule.viewOwnRequestById(requestList, idInput);
         return result;

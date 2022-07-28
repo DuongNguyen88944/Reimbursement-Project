@@ -1,8 +1,8 @@
 PRESENTATION IMPORTANT INFOS
 Who Presenting What? (The topics will be presented in the following order)
-1.Repository/Service TEST
+1.Repository/Service TEST     Viet
 2.API Routes Test             Fabian
-3.HTML/E2E
+3.HTML/E2E                    Duong
 
 REPOSITORY/SERVICE PRESENTER NOTE
 

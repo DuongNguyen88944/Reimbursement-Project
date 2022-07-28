@@ -50,13 +50,13 @@ public class ServiceTest {
     
     @Test
     public void viewOwnRequestTest() {
-        List<Request> result = requestService.serviceViewRequestWithBusinessRules("Create request Employee");
+        List<Request> result = requestService.serviceViewRequestByName("Create request Employee");
         Assert.assertEquals(result, result);
     }   
      
     @Test
     public void viewRequestByIdTest() {
-        List<Request> result = requestService.serviceViewRequestBaseOnId(30);
+        List<Request> result = requestService.serviceViewRequestById(30);
         Assert.assertEquals(result, result);
     }      
 
