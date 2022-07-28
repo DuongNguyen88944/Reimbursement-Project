@@ -39,14 +39,14 @@ public class RepTest {
 
     @Test
     public void createRequestPositiveTest() {
-        Request testRequest = new Request(2,"Fabian A","Create request repository layer", 600, "Pending", "N/A");
+        Request testRequest = new Request("Fabian","Create request repository layer", 600, "Pending", "N/A");
         Request result = requestDao.createRequest(testRequest);
         Assert.assertNotNull(result.getTicket_number());
     }
 
     @Test
     public void updateRequestPositiveTest() {
-        Request updatedRequest = new Request(1,"Fabian A", "Updated request repository layer", 500, "Accepted", "Acceptable Request");
+        Request updatedRequest = new Request(1,"Fabian", "Updated request repository layer", 500, "Accepted", "Acceptable Request");
         Request result = requestDao.updateRequest(updatedRequest);
         Assert.assertEquals("Accepted", result.getStatus());
     }
