@@ -46,3 +46,15 @@ PLEASE CHANGE THE FOLLOWING AFTER YOU PULL THE FINAL VERSION OF THE APP TO YOUR 
 
 PLEASE FEEL FREE TO CHANGE THE CSS DESIGN IF YOU LIKE!
 THANK YOU!
+
+
+Restrospective
+what did the team do well?
+- Follow sprint schedule
+- We try to follow scrum methodology. We have a scrum everyday to check in with the team and review the development process
+- We follow our test plan and complete all the require user stories and business rules
+- We consult with the product owner(aka Eric) to make sure that we are on the right track
+
+what lessons were learned that you can take into future sprints?
+- How to work as a team.
+- We get to have hand on experience with full stack development
