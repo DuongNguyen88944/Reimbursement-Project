@@ -71,6 +71,6 @@ buildNumber.properties
 # Ignore the driver
 *.exe
 
-
+html-reports.html
 
 *.json
