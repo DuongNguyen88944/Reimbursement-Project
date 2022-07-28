@@ -22,7 +22,7 @@ public class ManagerSteps {
     public void the_manager_select_an_request_ID() {
         
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("3");
+        testerOption.selectByVisibleText("2");
     }
     
     @When("The manager select the accept option")
@@ -48,7 +48,7 @@ public class ManagerSteps {
     @Given("The manager select an ID")
     public void the_manager_select_an_ID() {
         Select testerOption = new Select(TestRunner.driver.findElement(By.id("idInput")));
-        testerOption.selectByVisibleText("4");
+        testerOption.selectByVisibleText("3");
     }
     @When("The manager see the request table")
     public void the_manager_see_the_request_table() {

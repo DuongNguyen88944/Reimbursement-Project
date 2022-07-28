@@ -20,22 +20,21 @@ HTML/E2E PRESENTER NOTE
     username: Fabian
     password: password
 3.PLEASE ENTER A REQUEST THAT IS EASY TO RECOGNIZE 
-4.AFTER GO BACK TO THE MANAGER PAGE TO APPROVE A REQUEST PLEASE PICK THE ONE THAT JUST ASSIGN USING THE EMPLOYEE PAGE
+4.AFTER GO BACK TO THE MANAGER PAGE TO APPROVE A REQUEST PLEASE PICK THE ONE THAT JUST ASSIGN USING THE EMPLOYEE PAGE (THE LAST ID ON THE LIST)
 
 
 ----------------------------------------------------------------------
 
 IMPORTANT: The following steps need to be done to reset database BEFORE run any test
-IF THE REQUESTS TABLE IN DBEAVER IS NOT EMPTY AND CONTAIN ID 1,3 AND 4 RUN THE FOLLOWING SQL COMMANDS IN DBEAVER
+IF THE REQUESTS TABLE IN DBEAVER IS NOT EMPTY AND CONTAIN ID 1,2 AND 3 RUN THE FOLLOWING SQL COMMANDS IN DBEAVER
+    update requests set status = 'Pending' where ticket_number = 2;
     update requests set status = 'Pending' where ticket_number = 3;
-    update requests set status = 'Pending' where ticket_number = 4;
 
 ELSE IF THE REQUESTS TABLE IS EMPTY RUN THE FOLLOWING COMMANDS
-    insert into requests values (1, 'Fabian A', 'To be updated', 500, 'Pending', 'N/A');
-    insert into requests values (3, 'Automation Test Accept', 'Gas money', 500, 'Pending', 'N/A');
-    insert into requests values (4, 'Automation Test Reject', 'Gas money', 500, 'Pending', 'N/A');
-    update requests set status = 'Pending' where ticket_number = 3;
-    update requests set status = 'Pending' where ticket_number = 4;
+    insert into requests values (1, 'Fabian', 'To be updated', 500, 'Pending', 'N/A');
+    insert into requests values (2, 'Automation Test Accept', 'Gas money', 500, 'Pending', 'N/A');
+    insert into requests values (3, 'Automation Test Reject', 'Gas money', 500, 'Pending', 'N/A');
+    
 
 ------------------------------------------------------------------------
 
