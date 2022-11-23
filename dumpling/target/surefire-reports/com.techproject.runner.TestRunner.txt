@@ -1,4 +1,41 @@
 -------------------------------------------------------------------------------
 Test set: com.techproject.runner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.713 s - in com.techproject.runner.TestRunner
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 2.47 s <<< FAILURE! - in com.techproject.runner.TestRunner
+com.techproject.runner.TestRunner  Time elapsed: 2.469 s  <<< ERROR!
+org.openqa.selenium.SessionNotCreatedException: 
+session not created: This version of ChromeDriver only supports Chrome version 103
+Current browser version is 106.0.5249.119 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'LAPTOP-5KI7AQG2', ip: '10.0.0.94', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_332'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	Ordinal0 [0x00FC6463+2188387]
+	Ordinal0 [0x00F5E461+1762401]
+	Ordinal0 [0x00E73D78+802168]
+	Ordinal0 [0x00E94E59+937561]
+	Ordinal0 [0x00E90A6C+920172]
+	Ordinal0 [0x00E8E331+910129]
+	Ordinal0 [0x00EC1430+1119280]
+	Ordinal0 [0x00EC108A+1118346]
+	Ordinal0 [0x00EBC5F6+1099254]
+	Ordinal0 [0x00E96BE0+945120]
+	Ordinal0 [0x00E97AD6+948950]
+	GetHandleVerifier [0x012671F2+2712546]
+	GetHandleVerifier [0x0125886D+2652765]
+	GetHandleVerifier [0x0105002A+520730]
+	GetHandleVerifier [0x0104EE06+516086]
+	Ordinal0 [0x00F6468B+1787531]
+	Ordinal0 [0x00F68E88+1805960]
+	Ordinal0 [0x00F68F75+1806197]
+	Ordinal0 [0x00F71DF1+1842673]
+	BaseThreadInitThunk [0x76527BA9+25]
+	RtlInitializeExceptionChain [0x7786BB3B+107]
+	RtlClearBits [0x7786BABF+191]
+
+	at com.techproject.runner.TestRunner.setup(TestRunner.java:32)
+
+com.techproject.runner.TestRunner  Time elapsed: 2.47 s  <<< ERROR!
+java.lang.NullPointerException
+	at com.techproject.runner.TestRunner.teardown(TestRunner.java:45)
+

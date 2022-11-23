@@ -32,7 +32,7 @@ public class LoginSteps {
 
     @Given("The employee is on the login page")
     public void the_employee_is_on_the_login_page() {
-       TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/Identification.html");
+       TestRunner.driver.get("File://C:/Project2/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/Identification.html");
     }
         
 

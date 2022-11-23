@@ -16,7 +16,7 @@ public class EmployeeSteps {
     @Given("The employee is on their custom page")
     public void the_employee_is_on_their_custom_page() {
         // go to login page, then log in
-        TestRunner.driver.get("File://C:/Users/duong/Desktop/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/employee.html");
+        TestRunner.driver.get("File://C:/Project2/Tech-Project-Java-Dumplings-/dumpling/src/test/resources/webpages/employee.html");
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {

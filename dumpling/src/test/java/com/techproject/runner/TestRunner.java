@@ -36,7 +36,7 @@ public class TestRunner {
         manager = new Manager(driver);
         employee = new Employee(driver);
     }
-        
+    //src\test\resources\chromedriver.exe
     
 
     @AfterClass
